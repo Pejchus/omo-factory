@@ -14,6 +14,12 @@ public class Robot {
     private int electricity;
     private int oil;
     private boolean functionality;
+
+    public Robot(int electricity,int oil){
+        this.electricity = electricity;
+        this.oil = oil;
+        this.functionality = true;
+    }
     
     int get_electricity(){
         return this.electricity;

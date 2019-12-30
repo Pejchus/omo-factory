@@ -10,5 +10,17 @@ package cvut.fel.omo.factory;
  * @author Štěpán
  */
 public class Person {
-    
+    private int wage;
+
+    public Person(int wage){
+        this.wage = wage;
+    }
+    public int get_wage(){
+        return this.wage;
+    }
+
+    public void set_wage(int wage){
+        this.wage = wage;
+    }
 }
+
