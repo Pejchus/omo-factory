@@ -21,6 +21,15 @@ public class LineManagement {
     public void createLine(Blueprint blueprint, int priority, int productNum){
         Line line = new Line(blueprint,priority,productNum);
         lines.add(line);
-        activeLines++;
     }
+
+    public void functionalityCheck(){
+        for(Line line:lines){
+            if(line.functionalityCheck()){
+                activeLines++;
+            }
+        }
+    }
+
+
 }
