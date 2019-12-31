@@ -12,4 +12,9 @@ public class Blueprint {
         this.productCost = productCost;
         this.value = value;
     }
+
+    public String getConfiguration(){ return this.configuration;}
+    public String getMaterials(){ return this.materials;}
+    public int getProductCost(){return  this.productCost;}
+    public int getValue(){return this.value;}
 }

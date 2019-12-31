@@ -16,9 +16,11 @@ public class LineManagement {
     }
     public void addBlueprint(String config, String materials, int productCost, int value){
         Blueprint blueprint = new Blueprint(config,materials,productCost,value);
-
+        all_blueprints.add(blueprint);
     }
-    public void createLine(Blueprint blueprint){
-
+    public void createLine(Blueprint blueprint, int priority, int productNum){
+        Line line = new Line(blueprint,priority,productNum);
+        lines.add(line);
+        activeLines++;
     }
 }

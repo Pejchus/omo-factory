@@ -24,12 +24,21 @@ public class Robot {
     int get_electricity(){
         return this.electricity;
     }
-    
     int get_oil(){
         return this.oil;
     }
-    
+    void setFunctionality(boolean functionality){ this.functionality = functionality;}
     boolean is_functional(){
         return this.functionality;
+    }
+
+    public int functionalityCheck(){
+        if(!is_functional()){return 0;}
+        if(oil<30){
+            this.functionality = false;
+            //TODO create event which is calling maintainter
+            return 0;
+        }
+        return 1;
     }
 }

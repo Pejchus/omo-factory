@@ -22,12 +22,21 @@ public class Machine {
     public int get_electricity(){
         return this.electricity;
     }
-
     public int get_oil(){
         return this.oil;
     }
-
+    public void setFunctionality(boolean functionality){ this.functionality = functionality;}
     public boolean is_functional(){
         return this.functionality;
+    }
+
+    public int functionalityCheck(){
+        if(!is_functional()){return 0;}
+        if(oil<30){
+            this.functionality = false;
+            //TODO create event which is calling maintainter
+            return 0;
+        }
+        return 1;
     }
 }
