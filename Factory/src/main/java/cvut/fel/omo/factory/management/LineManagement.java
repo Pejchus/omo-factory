@@ -14,9 +14,8 @@ public class LineManagement {
         all_blueprints = new ArrayList<Blueprint>();
         outtages = new ArrayList<Integer>();
     }
-    public void addBlueprint(String config, String materials, int productCost, int value){
-        Blueprint blueprint = new Blueprint(config,materials,productCost,value);
-        all_blueprints.add(blueprint);
+    public void addBlueprint(Blueprint B){
+        all_blueprints.add(B);
     }
     public void createLine(Blueprint blueprint, int priority, int productNum){
         Line line = new Line(blueprint,priority,productNum);
