@@ -45,29 +45,29 @@ public class Line implements Comparable<Line> {
     }
     public int getPriority(){return this.priority;}
 
-    public boolean functionalityCheck(){
-        int functionalRobots = 0;
+    public boolean functionalityCheck(Storage storage){
+        int nonFunctionalRobots = 0;
         int functionalMachines = 0;
         for(Robot robot:this.robots){
-            functionalRobots += robot.functionalityCheck();
+            nonFunctionalRobots += robot.functionalityCheck();
         }
         for(Machine machine:this.machines){
             functionalMachines += machine.functionalityCheck();
         }
-        //TODO check for spare robots in storage is needed (machines are irreplaceable)
-        if(this.machines.size() != functionalMachines){
+        if(nonFunctionalRobots>0){
+            if(nonFunctionalRobots>storage.numRobot()){return false;}
+        }
+        if(this.machines.size() != functionalMachines ){
             return false;
         }
         return true;
     }
     public void work(){
-        if(functionalityCheck()){
             /*TODO work will create a product
             1) update consumption stats of robots and machines and send them to API
             2) cost of product will be subtracted from finance budget*
             3) value of product will be added to finance budget
             4) time iterates*/
-        }
     }
 
     @Override

@@ -33,12 +33,12 @@ public class Robot {
     }
 
     public int functionalityCheck(){
-        if(!is_functional()){return 0;}
+        if(!is_functional()){return 1;}
         if(oil<30){
             this.functionality = false;
             //TODO create event which is calling maintainter
-            return 0;
+            return 1;
         }
-        return 1;
+        return 0;
     }
 }

@@ -23,10 +23,10 @@ public class LineManagement {
         lines.add(line);
     }
 
-    public void functionalityCheck(){
+    public void functionalityCheck(Storage storage){
         Collections.sort(this.lines);
-        for(Line line:lines){
-            if(line.functionalityCheck()){
+        for(Line line:lines) {
+            if (line.functionalityCheck(storage)) {
                 activeLines++;
             }
         }

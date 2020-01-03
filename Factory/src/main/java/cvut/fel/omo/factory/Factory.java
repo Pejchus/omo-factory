@@ -30,6 +30,9 @@ public class Factory {
     public void createLine(Blueprint blueprint, int priority, int productNum) {
         lineManagement.createLine(blueprint,priority,productNum);
     }
+    public void functionalityCheck(Storage storage){
+        lineManagement.functionalityCheck(storage);
+    }
     public void work(){
     }
 }
