@@ -1,6 +1,7 @@
 package cvut.fel.omo.factory.management;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class LineManagement {
     private ArrayList<Line> lines;
@@ -23,6 +24,7 @@ public class LineManagement {
     }
 
     public void functionalityCheck(){
+        Collections.sort(this.lines);
         for(Line line:lines){
             if(line.functionalityCheck()){
                 activeLines++;

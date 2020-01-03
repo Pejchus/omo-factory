@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author Štěpán
  */
-public class Line {
+public class Line implements Comparable<Line> {
     private int priority;
     private Blueprint blueprint;
     private ArrayList<Machine> machines;
@@ -43,6 +43,7 @@ public class Line {
             }
         }
     }
+    public int getPriority(){return this.priority;}
 
     public boolean functionalityCheck(){
         int functionalRobots = 0;
@@ -67,5 +68,11 @@ public class Line {
             3) value of product will be added to finance budget
             4) time iterates*/
         }
+    }
+
+    @Override
+    public int compareTo(Line line){
+        return (this.getPriority() < line.getPriority() ? -1 :
+                (this.getPriority() == line.getPriority() ? 0 : 1));
     }
 }
