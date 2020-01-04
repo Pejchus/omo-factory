@@ -14,11 +14,15 @@ public class Robot {
     private int electricity;
     private int oil;
     private boolean functionality;
+    private boolean replacment;
+    private Robot replaceRobot;
 
     public Robot(int electricity,int oil){
         this.electricity = electricity;
         this.oil = oil;
         this.functionality = true;
+        this.replacment = false;
+        this.replaceRobot = null;
     }
     
     int get_electricity(){
@@ -32,13 +36,25 @@ public class Robot {
         return this.functionality;
     }
 
-    public int functionalityCheck(){
-        if(!is_functional()){return 1;}
-        if(oil<30){
+    public int functionalityCheck(Storage storage){
+        if(!is_functional() && !this.replacment){return 1;}
+        if(this.oil<30){
+            if(storage.numRobot() > 0){
+                //TODO event creator
+                //event_creator.maintanance(this);
+                this.replacment = true;
+                this.replaceRobot = storage.getRobot();
+            }
             this.functionality = false;
-            //TODO create event which is calling maintainter
             return 1;
         }
         return 0;
+    }
+
+    public void maintananceCompleted(Storage storage){
+        this.functionality = true;
+        this.replacment = false;
+        storage.returnRobot(this.replaceRobot);
+
     }
 }

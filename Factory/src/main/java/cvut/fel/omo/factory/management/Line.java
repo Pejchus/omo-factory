@@ -49,7 +49,7 @@ public class Line implements Comparable<Line> {
         int nonFunctionalRobots = 0;
         int functionalMachines = 0;
         for(Robot robot:this.robots){
-            nonFunctionalRobots += robot.functionalityCheck();
+            nonFunctionalRobots += robot.functionalityCheck(storage);
         }
         for(Machine machine:this.machines){
             functionalMachines += machine.functionalityCheck();
