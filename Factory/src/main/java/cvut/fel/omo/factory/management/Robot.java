@@ -10,7 +10,7 @@ package cvut.fel.omo.factory.management;
  *
  * @author Štěpán
  */
-public class Robot {
+public class Robot extends Destroyer{
     private int electricity;
     private int oil;
     private boolean functionality;
@@ -39,7 +39,10 @@ public class Robot {
     }
 
     public int functionalityCheck(Storage storage){
+
         if(!is_functional() && !this.replacment){return 1;}
+        int result = mayDestroy();
+        oil-=(int)(3.0 * Math.random());
         if(this.oil<30){
             if(storage.numRobot() > 0){
                 //TODO event creator
@@ -59,4 +62,6 @@ public class Robot {
         storage.returnRobot(this.replaceRobot);
 
     }
+
+
 }
