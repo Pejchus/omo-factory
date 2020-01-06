@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 package cvut.fel.omo.factory.management;
-
+import java.util.*;
 /**
  *
  * @author Štěpán
  */
-public class Machine {
+public class Machine extends Destroyer {
     private int electricity, oil;
     private boolean functionality;
 
@@ -32,11 +32,14 @@ public class Machine {
 
     public int functionalityCheck(){
         if(!is_functional()){return 0;}
+        int result = mayDestroy();
+        oil-=(int)(3.0 * Math.random());
         if(oil<30){
-            this.functionality = false;
             //TODO create event which is calling maintainter
-            return 0;
+            result = 0;
         }
-        return 1;
+        if(result==0){this.functionality=false;}
+        return result;
     }
+
 }
