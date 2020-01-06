@@ -68,7 +68,6 @@ public class Line implements Comparable<Line> {
     public void work(){
             /*TODO work will create a product
             1) update consumption stats of robots and machines and send them to API
-            2) cost of product will be subtracted from finance budget*
             3) value of product will be added to finance budget
             4) time iterates*/
         getRobotDiagnostics();
