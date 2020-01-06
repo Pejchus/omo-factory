@@ -89,6 +89,7 @@ public class Line implements Comparable<Line> {
             oil = Integer.toString(r.robotApi.getOil());
             el = Integer.toString(r.robotApi.getElectricity());
             ret[i] = "Robot" + (i+1) + "'s oil level: " + oil + ", Electricity consumption: " + el;
+            i++;
         }
         return ret;
     }
@@ -103,6 +104,7 @@ public class Line implements Comparable<Line> {
             oil = Integer.toString(m.machineApi.getOil());
             el = Integer.toString(m.machineApi.getElectricity());
             ret[i] = "Machine" + (i+1) + "'s oil level: " + oil + ", Electricity consumption: " + el;
+            i++;
         }
         return ret;
     }
