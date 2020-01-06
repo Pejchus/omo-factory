@@ -12,17 +12,19 @@ import java.util.*;
 public class Machine extends Destroyer {
     private int electricity, oil;
     private boolean functionality;
+    MachineAPI machineApi;
 
     public Machine(int electricity){
         this.electricity = electricity;
         this.oil = 100;
         this.functionality = true;
+        machineApi = new MachineAPI(this);
     }
 
-    public int get_electricity(){
+    int get_electricity(){
         return this.electricity;
     }
-    public int get_oil(){
+    int get_oil(){
         return this.oil;
     }
     public void setFunctionality(boolean functionality){ this.functionality = functionality;}

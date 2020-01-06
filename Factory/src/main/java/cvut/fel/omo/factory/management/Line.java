@@ -71,11 +71,40 @@ public class Line implements Comparable<Line> {
             2) cost of product will be subtracted from finance budget*
             3) value of product will be added to finance budget
             4) time iterates*/
+        getRobotDiagnostics();
+        getMachineDiagnostics();
     }
 
     @Override
     public int compareTo(Line line){
-        return (this.getPriority() < line.getPriority() ? -1 :
-                (this.getPriority() == line.getPriority() ? 0 : 1));
+        return (Integer.compare(this.getPriority(), line.getPriority()));
+    }
+
+    public String[] getRobotDiagnostics(){
+        String[] ret = new String[robots.size()];
+        String oil;
+        String el;
+        int i = 0;
+        for (Robot r : robots
+             ) {
+            oil = Integer.toString(r.robotApi.getOil());
+            el = Integer.toString(r.robotApi.getElectricity());
+            ret[i] = "Robot" + (i+1) + "'s oil level: " + oil + ", Electricity consumption: " + el;
+        }
+        return ret;
+    }
+
+    public String[] getMachineDiagnostics(){
+        String[] ret = new String[machines.size()];
+        String oil;
+        String el;
+        int i = 0;
+        for (Machine m : machines
+        ) {
+            oil = Integer.toString(m.machineApi.getOil());
+            el = Integer.toString(m.machineApi.getElectricity());
+            ret[i] = "Machine" + (i+1) + "'s oil level: " + oil + ", Electricity consumption: " + el;
+        }
+        return ret;
     }
 }

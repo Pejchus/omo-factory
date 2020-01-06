@@ -16,6 +16,7 @@ public class Robot extends Destroyer{
     private boolean functionality;
     private boolean replacment;
     private Robot replaceRobot;
+    RobotAPI robotApi;
 
     public Robot(int electricity,int oil){
         this.electricity = electricity;
@@ -23,6 +24,7 @@ public class Robot extends Destroyer{
         this.functionality = true;
         this.replacment = false;
         this.replaceRobot = null;
+        robotApi = new RobotAPI(this);
     }
     
     int get_electricity(){
