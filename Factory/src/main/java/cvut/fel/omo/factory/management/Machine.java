@@ -12,11 +12,13 @@ package cvut.fel.omo.factory.management;
 public class Machine {
     private int electricity, oil;
     private boolean functionality;
+    MachineAPI machineApi;
 
     public Machine(int electricity){
         this.electricity = electricity;
         this.oil = 100;
         this.functionality = true;
+        machineApi = new MachineAPI(this);
     }
 
     int get_electricity(){

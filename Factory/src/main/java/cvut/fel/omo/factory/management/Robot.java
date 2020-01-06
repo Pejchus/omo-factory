@@ -16,6 +16,7 @@ public class Robot {
     private boolean functionality;
     private boolean replacment;
     private Robot replaceRobot;
+    RobotAPI robotApi;
 
     public Robot(int electricity,int oil){
         this.electricity = electricity;
@@ -23,7 +24,7 @@ public class Robot {
         this.functionality = true;
         this.replacment = false;
         this.replaceRobot = null;
-        RobotAPI robotApi = new RobotAPI(this);
+        robotApi = new RobotAPI(this);
     }
     
     int get_electricity(){
