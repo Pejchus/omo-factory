@@ -23,6 +23,7 @@ public class Robot {
         this.functionality = true;
         this.replacment = false;
         this.replaceRobot = null;
+        RobotAPI robotApi = new RobotAPI(this);
     }
     
     int get_electricity(){

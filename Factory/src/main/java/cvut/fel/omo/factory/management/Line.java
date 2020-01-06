@@ -75,7 +75,6 @@ public class Line implements Comparable<Line> {
 
     @Override
     public int compareTo(Line line){
-        return (this.getPriority() < line.getPriority() ? -1 :
-                (this.getPriority() == line.getPriority() ? 0 : 1));
+        return (Integer.compare(this.getPriority(), line.getPriority()));
     }
 }

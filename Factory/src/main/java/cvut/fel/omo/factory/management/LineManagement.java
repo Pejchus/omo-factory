@@ -7,13 +7,13 @@ public class LineManagement {
     private ArrayList<Line> lines;
     private int activeLines;
     private ArrayList<Blueprint> all_blueprints;
-    private ArrayList<Integer> outtages;
+    private ArrayList<Integer> outages;
 
     public LineManagement(){
         lines = new ArrayList<Line>();
         activeLines = 0;
         all_blueprints = new ArrayList<Blueprint>();
-        outtages = new ArrayList<Integer>();
+        outages = new ArrayList<Integer>();
     }
     public void addBlueprint(Blueprint B){
         all_blueprints.add(B);
