@@ -20,6 +20,9 @@ public class Line implements Comparable<Line> {
     private int minMachine;
 
     public Line(Blueprint blueprint, int priority, int productNum){
+        machines = new ArrayList<Machine>();
+        people = new ArrayList<Person>();
+        robots = new ArrayList<Robot>();
         this.priority = priority;
         this.blueprint = blueprint;
         this.productNum = productNum;
