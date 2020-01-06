@@ -19,10 +19,10 @@ public class Machine {
         this.functionality = true;
     }
 
-    public int get_electricity(){
+    int get_electricity(){
         return this.electricity;
     }
-    public int get_oil(){
+    int get_oil(){
         return this.oil;
     }
     public void setFunctionality(boolean functionality){ this.functionality = functionality;}

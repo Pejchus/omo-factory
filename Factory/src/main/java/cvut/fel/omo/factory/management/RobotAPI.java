@@ -1,9 +1,7 @@
 package cvut.fel.omo.factory.management;
 
 public class RobotAPI {
-    boolean functionality;
-    int oil;
-    int electricity;
+
     Robot robot;
 
     RobotAPI(Robot robot){

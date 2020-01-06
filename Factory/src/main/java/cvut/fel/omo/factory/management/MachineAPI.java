@@ -1,9 +1,6 @@
 package cvut.fel.omo.factory.management;
 
 public class MachineAPI {
-    boolean functionality;
-    int oil;
-    int electricity;
     Machine  machine;
 
     MachineAPI(Machine machine){
