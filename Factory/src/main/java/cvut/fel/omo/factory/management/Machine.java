@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package cvut.fel.omo.factory.management;
+import cvut.fel.omo.factory.events.Event;
+import cvut.fel.omo.factory.events.EventCreator;
+
 import java.util.*;
 /**
  *
@@ -14,7 +17,8 @@ public class Machine extends Destroyer {
     private boolean functionality;
     MachineAPI machineApi;
 
-    public Machine(int electricity){
+    public Machine(int electricity,EventCreator e){
+        eventCreator=e;
         this.electricity = electricity;
         this.oil = 100;
         this.functionality = true;
@@ -35,10 +39,10 @@ public class Machine extends Destroyer {
 
     public int functionalityCheck(){
         if(!is_functional()){return 0;}
-        int result = mayDestroy();
+        int result = mayDestroy(2);
         oil-=(int)(3.0 * Math.random());
         if(oil<30){
-            //TODO create event which is calling maintainter
+            eventCreator.pushEvent(new Event("run out of oil",this.toString(),2));
             result = 0;
         }
         if(result==0){this.functionality=false;}

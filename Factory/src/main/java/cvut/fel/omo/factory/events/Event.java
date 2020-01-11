@@ -14,4 +14,6 @@ public class Event {
     public int getPriority() {
         return priority;
     }
+    public String getSource(){return source;}
 }
+

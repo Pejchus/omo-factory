@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package cvut.fel.omo.factory.management;
+import cvut.fel.omo.factory.events.EventCreator;
+
 import java.util.ArrayList;
 /**
  *
@@ -19,7 +21,7 @@ public class Line implements Comparable<Line> {
     private int minRobot;
     private int minMachine;
 
-    public Line(Blueprint blueprint, int priority, int productNum){
+    public Line(Blueprint blueprint, int priority, int productNum, EventCreator e){
         machines = new ArrayList<Machine>();
         people = new ArrayList<Person>();
         robots = new ArrayList<Robot>();
@@ -32,7 +34,7 @@ public class Line implements Comparable<Line> {
             switch(A){
                 //TODO Discuss if parameters electricity and oil are needed
                 case 'R':
-                    Robot newRobot = new Robot(0,100);
+                    Robot newRobot = new Robot(0,100,e);
                     robots.add(newRobot);
                     break;
                 case 'P':
@@ -40,7 +42,7 @@ public class Line implements Comparable<Line> {
                     people.add(newPerson);
                     break;
                 case 'M':
-                    Machine newMachine = new Machine(0);
+                    Machine newMachine = new Machine(0,e);
                     machines.add(newMachine);
                     break;
             }

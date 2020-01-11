@@ -1,15 +1,17 @@
 package cvut.fel.omo.factory.management;
 
+import cvut.fel.omo.factory.events.EventCreator;
+
 import java.util.*;
 public class Storage {
     private HashMap<String, Integer> storageContents;
     private Stack<Robot> robotStack;
 
-    public Storage(/*String[] materials*/){
+    public Storage(/*String[] materials*/EventCreator e){
         robotStack = new Stack<Robot>();
         storageContents = new HashMap<String, Integer>();
         //TODO Discuss how many spare robots should be in storage
-        for(int i=0;i<10;i++){robotStack.add(new Robot(0,100));}
+        for(int i=0;i<10;i++){robotStack.add(new Robot(0,100,e));}
     }
 
     public HashMap<String, Integer> getStorageContents(){

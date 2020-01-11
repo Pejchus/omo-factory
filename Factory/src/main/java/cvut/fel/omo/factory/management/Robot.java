@@ -6,6 +6,9 @@ package cvut.fel.omo.factory.management;
  * and open the template in the editor.
  */
 
+import cvut.fel.omo.factory.events.Event;
+import cvut.fel.omo.factory.events.EventCreator;
+
 /**
  *
  * @author Štěpán
@@ -18,7 +21,8 @@ public class Robot extends Destroyer{
     private Robot replaceRobot;
     RobotAPI robotApi;
 
-    public Robot(int electricity,int oil){
+    public Robot(int electricity, int oil, EventCreator e){
+        eventCreator =e;
         this.electricity = electricity;
         this.oil = oil;
         this.functionality = true;
@@ -41,19 +45,21 @@ public class Robot extends Destroyer{
     public int functionalityCheck(Storage storage){
 
         if(!is_functional() && !this.replacment){return 1;}
-        int result = mayDestroy();
+        int replacementCheck = (storage.numRobot() > 0) ? 0 : 1 ;
+        int result = mayDestroy(replacementCheck+1);
         oil-=(int)(3.0 * Math.random());
         if(this.oil<30){
+            eventCreator.pushEvent(new Event("run out of oil",this.toString(),replacementCheck+1));
+        }
+        if(this.oil<30 || result == 0){
             if(storage.numRobot() > 0){
-                //TODO event creator
-                //event_creator.maintanance(this);
                 this.replacment = true;
                 this.replaceRobot = storage.getRobot();
             }
             this.functionality = false;
-            return 1;
+            return 0;
         }
-        return 0;
+        return 1;
     }
 
     public void maintananceCompleted(Storage storage){
