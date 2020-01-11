@@ -9,6 +9,7 @@ public class MachineTest {
     public void mayDestroyTest() {
         Machine m = new Machine(100);
         //next tests does not necessarily work but high propability says they should
+        m.setOil(1000);
         m.functionalityCheck();//calls maydestroy
         Assert.assertTrue(m.is_functional());
         for(int i = 0; i<100;i++){

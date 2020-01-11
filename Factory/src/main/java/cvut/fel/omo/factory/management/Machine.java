@@ -24,6 +24,7 @@ public class Machine extends Destroyer {
     int get_electricity(){
         return this.electricity;
     }
+    void setOil(int oil){this.oil=oil;}
     int get_oil(){
         return this.oil;
     }
