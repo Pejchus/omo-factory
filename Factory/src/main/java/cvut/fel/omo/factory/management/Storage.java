@@ -11,7 +11,7 @@ public class Storage {
         robotStack = new Stack<Robot>();
         storageContents = new HashMap<String, Integer>();
         //TODO Discuss how many spare robots should be in storage
-        for(int i=0;i<10;i++){robotStack.add(new Robot(0,100,e));}
+        for(int i=0;i<10;i++){robotStack.add(new Robot(0,100,0,e));}
     }
 
     public HashMap<String, Integer> getStorageContents(){

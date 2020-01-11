@@ -1,8 +1,5 @@
 package cvut.fel.omo.factory.events;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class EventCreator {
     private Queue<Event> events;
@@ -24,9 +21,7 @@ public class EventCreator {
         this.tact++;
         notifyObservers();
     }
-    public Queue<Event> getEvents(){
-        return events;
-    }
+
     public void notifyObservers(){
         maintanance.update();
         inspections.update();
@@ -34,7 +29,11 @@ public class EventCreator {
     Comparator<Event> eventComparator = new Comparator<Event>() {
         @Override
         public int compare(Event e1, Event e2) {
-            return e2.getPriority() - e1.getPriority();
+            return e1.getPriority() - e2.getPriority();
         }
     };
+
+    public Queue<Event> getEvents() {
+        return events;
+    }
 }
