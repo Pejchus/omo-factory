@@ -44,7 +44,7 @@ public class LineManagement {
         for(Line line:lines) {
             finance.pay(line.payPeasants());
             if (line.functionalityCheck(storage)) {
-                line.work();
+                line.work(storage);
                 this.activeLines++;
             }
         }

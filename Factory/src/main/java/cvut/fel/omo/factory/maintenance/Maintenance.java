@@ -3,13 +3,16 @@ package cvut.fel.omo.factory.maintenance;
 import cvut.fel.omo.factory.events.Event;
 import cvut.fel.omo.factory.events.EventCreator;
 import cvut.fel.omo.factory.events.MaintananceObserver;
+import cvut.fel.omo.factory.finance.Finance;
 
 public class Maintenance {
     Maintainer[] maintainers;
     EventCreator eventCreator;
     private MaintananceObserver observer;
+    private Finance finance;
 
-    public Maintenance(EventCreator eventCreator){
+    public Maintenance(EventCreator eventCreator,Finance f){
+        finance=f;
         this.eventCreator = eventCreator;
         observer = new MaintananceObserver(eventCreator,this);
         this.maintainers = new Maintainer[10];
@@ -21,6 +24,7 @@ public class Maintenance {
     }
     public void processRepair(){
         for(int i = 0;i< maintainers.length ; i++){
+            finance.pay(maintainers[i].wage);
             maintainers[i].availableIn--;
             if(maintainers[i].availableIn==0){
                 eventCreator.pushEvent(new Event("repair done",Integer.toString(maintainers[i].repairs),100));
