@@ -11,7 +11,7 @@ public class LineStatData {
     int all_electricity;
     int all_oil;
     String[] electricity;
-    int[] oil;
+    String[] oil;
     int wages;
     ArrayList<Line> lines;
 
@@ -21,9 +21,6 @@ public class LineStatData {
 
         for (Line l : lines) {
 
-                 ) {
-
-            }
         }
 
         }
