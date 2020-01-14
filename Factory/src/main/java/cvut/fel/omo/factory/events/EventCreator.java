@@ -9,9 +9,12 @@ public class EventCreator {
 
     public EventCreator(int tact){
         events = new PriorityQueue<Event>(eventComparator);
-        this.maintanance = new MaintananceObserver(this);
-        this.inspections = new InspectorObserver(this);
+        //this.maintanance = new MaintananceObserver(this);
+       // this.inspections = new InspectorObserver(this);
         this.tact = tact;
+    }
+    void setMaintanance(MaintananceObserver m){
+        maintanance=m;
     }
     public boolean pushEvent(Event event){
         return events.add(event);

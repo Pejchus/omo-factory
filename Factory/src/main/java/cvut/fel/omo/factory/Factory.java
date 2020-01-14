@@ -17,7 +17,7 @@ public class Factory {
 
     public Factory(){
         this.eventCreator = new EventCreator(0);
-        this.maintenance = new Maintenance();
+        this.maintenance = new Maintenance(eventCreator);
         this.finance = new Finance(10000);
         this.storage = new Storage(eventCreator);
         this.lineManagement = new LineManagement(eventCreator);

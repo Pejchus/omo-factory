@@ -8,7 +8,7 @@ public class MachineTest {
 
     @Test
     public void mayDestroyTest() {
-        Machine m = new Machine(100, new EventCreator(0));
+        Machine m = new Machine(100,0,new EventCreator(0));
         //next tests does not necessarily work but high propability says they should
         m.setOil(1000);
         m.functionalityCheck();//calls maydestroy
