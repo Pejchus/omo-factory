@@ -18,6 +18,12 @@ public class Finance {
     public void removeMaterial(String material) {
         this.materialsCost.remove(material);
     }
+    public void pay(int amount){
+        budget-=amount;
+    }
+    public void profit(int amount){
+        budget+=amount;
+    }
     /*public void purchaseMaterial(Material material, int amount) {
         budget -= (materialsCost.get(material)*amount);
     }

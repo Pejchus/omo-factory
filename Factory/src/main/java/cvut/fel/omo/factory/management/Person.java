@@ -22,5 +22,7 @@ public class Person {
     public void set_wage(int wage){
         this.wage = wage;
     }
+
+
 }
 
