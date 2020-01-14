@@ -13,6 +13,7 @@ public class Time {
         return obj;
     }
 
+    public void updateTime(){obj.tact++;}
 
-
+    public int getTact() { return tact; }
 }
