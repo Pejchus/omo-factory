@@ -14,6 +14,7 @@ public class LineStatData {
     String[] oil;
     int wages;
     ArrayList<Line> lines;
+    int tact;
 
 
     public LineStatData(ConfigData data){

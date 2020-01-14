@@ -2,8 +2,7 @@ package cvut.fel.omo.factory.report;
 
 public class consumptionReport implements report {
     @Override
-    public report createReport(int from, int to) {
-        return null;
+    public void createReport(int from, int to) {
     }
 
     @Override
