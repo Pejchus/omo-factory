@@ -15,7 +15,7 @@ public class Factory {
     private LineManagement lineManagement;
     private EventCreator eventCreator;
 
-    public Factory(){
+    public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
         this.maintenance = new Maintenance();
         this.finance = new Finance(10000);
@@ -23,19 +23,24 @@ public class Factory {
         this.lineManagement = new LineManagement(eventCreator);
     }
 
-    public void addMaterial(String material, int cost, int amount){
-        finance.addMaterial(material,cost);
-        storage.addToStorage(material,amount);
+    public void addMaterial(String material, int cost, int amount) {
+        finance.addMaterial(material, cost);
+        storage.addToStorage(material, amount);
     }
-    public void addBlueprint(Blueprint B){
+
+    public void addBlueprint(Blueprint B) {
         lineManagement.addBlueprint(B);
     }
+
     public void createLine(Blueprint blueprint, int priority, int productNum) {
-        lineManagement.createLine(blueprint,priority,productNum);
+        lineManagement.createLine(blueprint, priority, productNum);
     }
-    public void functionalityCheck(Storage storage){
-        lineManagement.functionalityCheck(storage);
-    }
-    public void work(){
+
+    public void work(Time time){
+        //eventCreator.doEvenets
+        lineManagement.work(this.storage);
+        //reports
+        time.updateTime();
+
     }
 }

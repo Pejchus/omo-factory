@@ -27,11 +27,12 @@ public class LineManagement {
         lines.add(line);
     }
 
-    public void functionalityCheck(Storage storage){
+    public void work(Storage storage){
         Collections.sort(this.lines);
         for(Line line:lines) {
             if (line.functionalityCheck(storage)) {
-                activeLines++;
+                line.work();
+                this.activeLines++;
             }
         }
     }
