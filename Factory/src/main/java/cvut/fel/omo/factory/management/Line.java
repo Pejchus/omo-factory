@@ -5,6 +5,7 @@
  */
 package cvut.fel.omo.factory.management;
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.finance.Finance;
 
 import java.util.ArrayList;
 /**
@@ -70,7 +71,7 @@ public class Line implements Comparable<Line> {
         }
         return true;
     }
-    public int work(Storage storage){
+    public int work(Finance finance){
             /*TODO work will create a product
             1) update consumption stats of robots and machines and send them to API
             3) value of product will be added to finance budget
@@ -84,7 +85,7 @@ public class Line implements Comparable<Line> {
             }
             profit+=blueprint.getValue();
             for (int i= 0;i<blueprint.getMaterials().length;i++){
-                profit-=storage.buyMaterial(blueprint.getMaterials()[i],blueprint.getNumMaterial()[i]);
+                profit-=blueprint.getNumMaterial()[i]*finance.getMaterialCost(blueprint.getMaterials()[i]);
             }
         getRobotDiagnostics();
         getMachineDiagnostics();

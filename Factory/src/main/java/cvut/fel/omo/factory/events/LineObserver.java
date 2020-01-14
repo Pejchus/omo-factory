@@ -16,7 +16,7 @@ public class LineObserver extends Observer {
         for(Event e:subject.getEvents()){
             if(e.getType()=="repair done"){
                 lines.repairDone(Integer.valueOf(e.getSource()));
-                subject.getEvents().remove(e);
+                subject.remove(e);
             }
         }
     }

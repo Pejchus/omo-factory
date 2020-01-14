@@ -1,4 +1,6 @@
 package cvut.fel.omo.factory.events;
+import cvut.fel.omo.factory.report.EventData;
+
 import java.util.*;
 
 public class EventCreator {
@@ -7,11 +9,13 @@ public class EventCreator {
     private InspectorObserver inspections;
     private LineObserver lines;
     private int tact;
+    EventData data;
 
     public EventCreator(int tact){
         events = new PriorityQueue<Event>(eventComparator);
         //this.maintanance = new MaintananceObserver(this);
        // this.inspections = new InspectorObserver(this);
+        data = new EventData();
         this.tact = tact;
     }
     void setMaintanance(MaintananceObserver m){
@@ -23,6 +27,10 @@ public class EventCreator {
     public boolean pushEvent(Event event){
         return events.add(event);
     }
+    void remove(Event e){
+        data.push(e);
+        events.remove(e);
+    }
     public int getTact(){return this.tact;}
     public void updateTact(int tact){
         this.tact = tact;
@@ -32,6 +40,7 @@ public class EventCreator {
     public void notifyObservers(){
         maintanance.update();
         inspections.update();
+        lines.update();
     }
     Comparator<Event> eventComparator = new Comparator<Event>() {
         @Override

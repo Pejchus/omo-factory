@@ -12,9 +12,7 @@ public class Storage {
         storageContents = new HashMap<String, Integer>();
         for(int i=0;i<10;i++){robotStack.add(new Robot(0,100,0,e));}
     }
-    public int buyMaterial(String material,int amount){
-        return amount * storageContents.get(material);
-    }
+
     public HashMap<String, Integer> getStorageContents(){
         return this.storageContents;
     }

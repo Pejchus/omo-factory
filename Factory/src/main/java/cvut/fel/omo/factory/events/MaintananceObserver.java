@@ -26,7 +26,7 @@ public class MaintananceObserver extends Observer {
             for (Map.Entry<String, Integer> entry : repairs.entrySet()) {
                 if(entry.getKey()==e.getType()){
                     if(maintenance.callMaintenance(entry.getValue(),Integer.valueOf(e.getSource()))){
-                        subject.getEvents().remove(e);
+                        subject.remove(e);
                     }else{break;}
 
                 }

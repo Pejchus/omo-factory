@@ -39,12 +39,12 @@ public class LineManagement {
             line.repairDone(serialNumber,storage);
         }
     }
-    public void work(Storage storage){
+    public void work(){
         Collections.sort(this.lines);
         for(Line line:lines) {
             finance.pay(line.payPeasants());
             if (line.functionalityCheck(storage)) {
-                line.work(storage);
+                finance.profit(line.work(finance));
                 this.activeLines++;
             }
         }

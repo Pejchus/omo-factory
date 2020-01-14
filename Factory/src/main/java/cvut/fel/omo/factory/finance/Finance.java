@@ -24,6 +24,9 @@ public class Finance {
     public void profit(int amount){
         budget+=amount;
     }
+    public int getMaterialCost(String material){
+        return materialsCost.get(material);
+    }
     /*public void purchaseMaterial(Material material, int amount) {
         budget -= (materialsCost.get(material)*amount);
     }
