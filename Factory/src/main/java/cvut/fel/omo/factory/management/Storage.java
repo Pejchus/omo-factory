@@ -10,10 +10,11 @@ public class Storage {
     public Storage(/*String[] materials*/EventCreator e){
         robotStack = new Stack<Robot>();
         storageContents = new HashMap<String, Integer>();
-        //TODO Discuss how many spare robots should be in storage
         for(int i=0;i<10;i++){robotStack.add(new Robot(0,100,0,e));}
     }
-
+    public int buyMaterial(String material,int amount){
+        return amount * storageContents.get(material);
+    }
     public HashMap<String, Integer> getStorageContents(){
         return this.storageContents;
     }

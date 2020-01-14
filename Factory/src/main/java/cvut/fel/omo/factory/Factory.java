@@ -12,15 +12,15 @@ public class Factory {
     private Storage storage;
     private Maintenance maintenance;
     private Finance finance;
-    private LineManagement lineManagement;
     private EventCreator eventCreator;
+    private LineManagement lineManagement;
 
     public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
-        this.maintenance = new Maintenance(eventCreator);
         this.finance = new Finance(10000);
+        this.maintenance = new Maintenance(eventCreator,finance);
         this.storage = new Storage(eventCreator);
-        this.lineManagement = new LineManagement(eventCreator,storage);
+        this.lineManagement = new LineManagement(eventCreator,storage,finance);
     }
 
     public void addMaterial(String material, int cost, int amount) {
@@ -31,7 +31,6 @@ public class Factory {
     public void addBlueprint(Blueprint B) {
         lineManagement.addBlueprint(B);
     }
-
     public void createLine(Blueprint blueprint, int priority, int productNum) {
         lineManagement.createLine(blueprint, priority, productNum);
     }

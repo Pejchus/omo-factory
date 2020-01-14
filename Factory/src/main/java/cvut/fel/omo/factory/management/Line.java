@@ -21,6 +21,7 @@ public class Line implements Comparable<Line> {
     private int minRobot;
     private int minMachine;
 
+
     public Line(Blueprint blueprint, int priority, int productNum, EventCreator e){
         machines = new ArrayList<Machine>();
         people = new ArrayList<Person>();
@@ -49,6 +50,8 @@ public class Line implements Comparable<Line> {
         }
     }
     public int getPriority(){return this.priority;}
+    public ArrayList<Robot> getRobots(){return robots;}
+    public ArrayList<Machine> getMachines(){return  machines;}
 
     public boolean functionalityCheck(Storage storage){
         int nonFunctionalRobots = 0;
@@ -67,14 +70,25 @@ public class Line implements Comparable<Line> {
         }
         return true;
     }
-    public int work(){
+    public int work(Storage storage){
             /*TODO work will create a product
             1) update consumption stats of robots and machines and send them to API
             3) value of product will be added to finance budget
             4) time iterates*/
+            int profit=0;
+            for(Robot r:robots){
+                profit-=r.get_electricity();
+            }
+            for(Machine m:machines) {
+                profit -= m.get_electricity();
+            }
+            profit+=blueprint.getValue();
+            for (int i= 0;i<blueprint.getMaterials().length;i++){
+                profit-=storage.buyMaterial(blueprint.getMaterials()[i],blueprint.getNumMaterial()[i]);
+            }
         getRobotDiagnostics();
         getMachineDiagnostics();
-        return 0;
+        return profit;
     }
     public int payPeasants(){
         int pay=0;
