@@ -11,6 +11,10 @@ public class Archive {
     public Archive(){
     }
 
+    public Archive getArchive(){
+        return this;
+    }
+
     public void addStat(StatData st){
         this.statData.add(st);
     }

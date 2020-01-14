@@ -22,7 +22,6 @@ public class LineStatData {
 
         for (Line l : lines) {
 
-        }
-
+            }
         }
 }

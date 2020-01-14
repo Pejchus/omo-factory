@@ -9,6 +9,10 @@ import java.nio.charset.StandardCharsets;
 public class configReport implements report {
     Archive archive;
 
+    public configReport(Archive archive){
+        this.archive = archive;
+    }
+
     @Override
     public void createReport(int from, int to) {
         try {
