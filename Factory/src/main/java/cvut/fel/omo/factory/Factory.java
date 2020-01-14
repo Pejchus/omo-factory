@@ -12,8 +12,8 @@ public class Factory {
     private Storage storage;
     private Maintenance maintenance;
     private Finance finance;
-    private LineManagement lineManagement;
     private EventCreator eventCreator;
+    private LineManagement lineManagement;
 
     public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
@@ -31,7 +31,6 @@ public class Factory {
     public void addBlueprint(Blueprint B) {
         lineManagement.addBlueprint(B);
     }
-
     public void createLine(Blueprint blueprint, int priority, int productNum) {
         lineManagement.createLine(blueprint, priority, productNum);
     }

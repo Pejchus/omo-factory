@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author Štěpán
  */
-public class Machine extends Destroyer {
+public class Machine extends Destroyer implements Comparable<Machine>{
     private int electricity, oil,priority;
     private boolean functionality;
     MachineAPI machineApi;
@@ -33,7 +33,7 @@ public class Machine extends Destroyer {
         return this.electricity;
     }
     void setOil(int oil){this.oil=oil;}
-    int get_oil(){
+    public int get_oil(){
         return this.oil;
     }
     public void setFunctionality(boolean functionality){ this.functionality = functionality;}
@@ -57,4 +57,8 @@ public class Machine extends Destroyer {
         this.functionality =true;
     }
 
+    @Override
+    public int compareTo(Machine machine){
+        return (Integer.compare(this.get_oil(), machine.get_oil()));
+    }
 }

@@ -13,7 +13,7 @@ import cvut.fel.omo.factory.events.EventCreator;
  *
  * @author Štěpán
  */
-public class Robot extends Destroyer{
+public class Robot extends Destroyer implements Comparable<Robot>{
     private int priority;
     private int electricity;
     private int oil;
@@ -34,14 +34,14 @@ public class Robot extends Destroyer{
         serialNumber=counter;
         counter++;
     }
-    int get_electricity(){
+    public int get_electricity(){
         return this.electricity;
     }
-    int get_oil(){
+    public int get_oil(){
         return this.oil;
     }
     void setFunctionality(boolean functionality){ this.functionality = functionality;}
-    boolean is_functional(){
+    public boolean is_functional(){
         return this.functionality;
     }
 
@@ -73,4 +73,8 @@ public class Robot extends Destroyer{
     }
 
 
+    @Override
+    public int compareTo(Robot robot){
+        return (Integer.compare(this.get_oil(), robot.get_oil()));
+    }
 }
