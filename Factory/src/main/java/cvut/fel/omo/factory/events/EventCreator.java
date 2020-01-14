@@ -1,32 +1,34 @@
 package cvut.fel.omo.factory.events;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 public class EventCreator {
     private Queue<Event> events;
     private MaintananceObserver maintanance;
     private InspectorObserver inspections;
+    private LineObserver lines;
     private int tact;
 
     public EventCreator(int tact){
         events = new PriorityQueue<Event>(eventComparator);
-        this.maintanance = new MaintananceObserver(this);
-        this.inspections = new InspectorObserver(this);
+        //this.maintanance = new MaintananceObserver(this);
+       // this.inspections = new InspectorObserver(this);
         this.tact = tact;
+    }
+    void setMaintanance(MaintananceObserver m){
+        maintanance=m;
+    }
+    void setLines(LineObserver l){
+        lines=l;
     }
     public boolean pushEvent(Event event){
         return events.add(event);
     }
     public int getTact(){return this.tact;}
-    public void updateTact(){
-        this.tact++;
+    public void updateTact(int tact){
+        this.tact = tact;
         notifyObservers();
     }
-    public Queue<Event> getEvents(){
-        return events;
-    }
+
     public void notifyObservers(){
         maintanance.update();
         inspections.update();
@@ -34,7 +36,11 @@ public class EventCreator {
     Comparator<Event> eventComparator = new Comparator<Event>() {
         @Override
         public int compare(Event e1, Event e2) {
-            return e2.getPriority() - e1.getPriority();
+            return e1.getPriority() - e2.getPriority();
         }
     };
+
+    public Queue<Event> getEvents() {
+        return events;
+    }
 }

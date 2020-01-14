@@ -1,6 +1,7 @@
 package cvut.fel.omo.factory.management;
 
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.events.LineObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,13 +12,17 @@ public class LineManagement {
     private ArrayList<Blueprint> all_blueprints;
     private ArrayList<Integer> outages;
     private EventCreator eventCreator;
+    private Storage storage;
+    private LineObserver observer;
 
-    public LineManagement(EventCreator e){
+    public LineManagement(EventCreator e,Storage s){
+        storage=s;
         lines = new ArrayList<Line>();
         activeLines = 0;
         all_blueprints = new ArrayList<Blueprint>();
         outages = new ArrayList<Integer>();
         eventCreator=e;
+        observer = new LineObserver(eventCreator,this);
     }
     public void addBlueprint(Blueprint B){
         all_blueprints.add(B);
@@ -26,12 +31,17 @@ public class LineManagement {
         Line line = new Line(blueprint,priority,productNum, eventCreator);
         lines.add(line);
     }
-
-    public void functionalityCheck(Storage storage){
+    public void repairDone(int serialNumber){
+        for(Line line:lines) {
+            line.repairDone(serialNumber,storage);
+        }
+    }
+    public void work(Storage storage){
         Collections.sort(this.lines);
         for(Line line:lines) {
             if (line.functionalityCheck(storage)) {
-                activeLines++;
+                line.work();
+                this.activeLines++;
             }
         }
     }

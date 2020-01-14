@@ -14,6 +14,7 @@ import cvut.fel.omo.factory.events.EventCreator;
  * @author Štěpán
  */
 public class Robot extends Destroyer{
+    private int priority;
     private int electricity;
     private int oil;
     private boolean functionality;
@@ -21,7 +22,8 @@ public class Robot extends Destroyer{
     private Robot replaceRobot;
     RobotAPI robotApi;
 
-    public Robot(int electricity, int oil, EventCreator e){
+    public Robot(int electricity, int oil,int priority, EventCreator e){
+        this.priority = priority;
         eventCreator =e;
         this.electricity = electricity;
         this.oil = oil;
@@ -29,8 +31,9 @@ public class Robot extends Destroyer{
         this.replacment = false;
         this.replaceRobot = null;
         robotApi = new RobotAPI(this);
+        serialNumber=counter;
+        counter++;
     }
-    
     int get_electricity(){
         return this.electricity;
     }
@@ -49,7 +52,7 @@ public class Robot extends Destroyer{
         int result = mayDestroy(replacementCheck+1);
         oil-=(int)(3.0 * Math.random());
         if(this.oil<30){
-            eventCreator.pushEvent(new Event("run out of oil",this.toString(),replacementCheck+1));
+            eventCreator.pushEvent(new Event("run out of oil",Integer.toString(serialNumber),replacementCheck+1+priority));
         }
         if(this.oil<30 || result == 0){
             if(storage.numRobot() > 0){

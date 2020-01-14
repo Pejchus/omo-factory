@@ -13,16 +13,20 @@ import java.util.*;
  * @author Štěpán
  */
 public class Machine extends Destroyer {
-    private int electricity, oil;
+    private int electricity, oil,priority;
     private boolean functionality;
     MachineAPI machineApi;
 
-    public Machine(int electricity,EventCreator e){
+    public Machine(int electricity,int priority,EventCreator e){
+        this.priority=priority;
         eventCreator=e;
         this.electricity = electricity;
         this.oil = 100;
         this.functionality = true;
         machineApi = new MachineAPI(this);
+
+        serialNumber=counter;
+        counter++;
     }
 
     int get_electricity(){
@@ -47,6 +51,10 @@ public class Machine extends Destroyer {
         }
         if(result==0){this.functionality=false;}
         return result;
+    }
+
+    public void maintananceDone(){
+        this.functionality =true;
     }
 
 }

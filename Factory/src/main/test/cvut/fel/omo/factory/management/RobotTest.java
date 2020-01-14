@@ -10,8 +10,8 @@ public class RobotTest {
     public void RunOutOfOilTest() {
         EventCreator e = new EventCreator(0);
         Storage s = new Storage(e);
-        Robot r = new Robot(100, 20,e);
-        r.functionalityCheck(s);
+        Robot r = new Robot(100, 20,0,e);
+        Assert.assertEquals(r.functionalityCheck(s),0);
         Event expected = new Event("run out of oil",r.toString(),1);
         Event result = e.getEvents().remove();
         Assert.assertNotNull(result);

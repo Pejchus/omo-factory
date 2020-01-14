@@ -34,7 +34,7 @@ public class Line implements Comparable<Line> {
             switch(A){
                 //TODO Discuss if parameters electricity and oil are needed
                 case 'R':
-                    Robot newRobot = new Robot(0,100,e);
+                    Robot newRobot = new Robot(0,100,this.priority,e);
                     robots.add(newRobot);
                     break;
                 case 'P':
@@ -42,13 +42,21 @@ public class Line implements Comparable<Line> {
                     people.add(newPerson);
                     break;
                 case 'M':
-                    Machine newMachine = new Machine(0,e);
+                    Machine newMachine = new Machine(0,this.priority,e);
                     machines.add(newMachine);
                     break;
             }
         }
     }
     public int getPriority(){return this.priority;}
+
+    public ArrayList<Robot> getRobots() {
+        return robots;
+    }
+
+    public ArrayList<Machine> getMachines() {
+        return machines;
+    }
 
     public boolean functionalityCheck(Storage storage){
         int nonFunctionalRobots = 0;
@@ -109,5 +117,15 @@ public class Line implements Comparable<Line> {
             i++;
         }
         return ret;
+    }
+    public void repairDone(int serialNumber, Storage storage){
+        for(Robot r:robots){
+            if (r.getSerialNumber()==serialNumber){
+                r.maintananceCompleted(storage);
+                return;
+            }
+        }for(Machine m:machines){
+            m.maintananceDone();
+        }
     }
 }

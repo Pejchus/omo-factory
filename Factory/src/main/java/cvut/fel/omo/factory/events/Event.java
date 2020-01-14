@@ -10,7 +10,7 @@ public class Event {
         this.source=source;
         this.priority=priority;
     }
-
+    public String getType(){return type;}
     public int getPriority() {
         return priority;
     }

@@ -5,6 +5,8 @@ import cvut.fel.omo.factory.events.EventCreator;
 
 abstract class Destroyer {
     protected EventCreator eventCreator;
+    protected static int counter;
+    protected int serialNumber;
     protected int mayDestroy(int replacement){
         if(((int)(30.0 * Math.random()))==1){
             eventCreator.pushEvent(new Event("neni mu nic",this.toString(),replacement));
@@ -19,5 +21,9 @@ abstract class Destroyer {
             return 0;
         }
         return 1;
+    }
+
+    public int getSerialNumber() {
+        return serialNumber;
     }
 }
