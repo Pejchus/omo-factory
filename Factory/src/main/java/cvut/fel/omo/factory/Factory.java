@@ -41,6 +41,7 @@ public class Factory {
         lineManagement.work(this.storage);
         //reports
         time.updateTime();
+        eventCreator.updateTact(time.getTact());
 
     }
 }

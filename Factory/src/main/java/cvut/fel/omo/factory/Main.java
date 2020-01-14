@@ -6,7 +6,7 @@ public class Main {
     public static void main(String args[]){
         Time time = Time.getInstance();
 
-        Factory factory = new Factory();
+        Factory factory = new Factory(time);
         factory.addMaterial("metal",10,500);
         String[] materials = {"metal", "wood"};
         int[] numMaterials = {20,10};

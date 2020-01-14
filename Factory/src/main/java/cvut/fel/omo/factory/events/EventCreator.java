@@ -17,8 +17,8 @@ public class EventCreator {
         return events.add(event);
     }
     public int getTact(){return this.tact;}
-    public void updateTact(){
-        this.tact++;
+    public void updateTact(int tact){
+        this.tact = tact;
         notifyObservers();
     }
 
