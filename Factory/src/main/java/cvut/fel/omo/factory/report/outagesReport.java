@@ -1,9 +1,24 @@
 package cvut.fel.omo.factory.report;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 public class outagesReport implements report {
+
+    Archive archive;
+
     @Override
-    public report createReport(int from, int to) {
-        return null;
+    public void createReport(int from, int to) {
+        try {
+            PrintWriter writer = new PrintWriter("outagesReport.txt", StandardCharsets.UTF_8);
+            for (int i = from; i < to; i++) {
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
