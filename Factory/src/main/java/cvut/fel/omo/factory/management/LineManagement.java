@@ -35,6 +35,8 @@ public class LineManagement {
             }
         }
     }
-
+    public ArrayList<Line> getLines(){
+        return this.lines;
+    }
 
 }
