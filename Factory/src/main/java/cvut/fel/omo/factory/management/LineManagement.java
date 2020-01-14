@@ -33,14 +33,7 @@ public class LineManagement {
     }
     public void repairDone(int serialNumber){
         for(Line line:lines) {
-            for(Robot r: line.getRobots()){
-                if (r.getSerialNumber()==serialNumber){
-                    r.maintananceCompleted(storage);
-                    return;
-                }
-            }for(Machine m:line.getMachines()){
-                m.maintananceDone();
-            }
+            line.repairDone(serialNumber,storage);
         }
     }
     public void work(Storage storage){

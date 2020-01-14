@@ -118,4 +118,14 @@ public class Line implements Comparable<Line> {
         }
         return ret;
     }
+    public void repairDone(int serialNumber, Storage storage){
+        for(Robot r:robots){
+            if (r.getSerialNumber()==serialNumber){
+                r.maintananceCompleted(storage);
+                return;
+            }
+        }for(Machine m:machines){
+            m.maintananceDone();
+        }
+    }
 }
