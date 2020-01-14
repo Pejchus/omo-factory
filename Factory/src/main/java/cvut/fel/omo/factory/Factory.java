@@ -20,7 +20,7 @@ public class Factory {
         this.maintenance = new Maintenance(eventCreator);
         this.finance = new Finance(10000);
         this.storage = new Storage(eventCreator);
-        this.lineManagement = new LineManagement(eventCreator);
+        this.lineManagement = new LineManagement(eventCreator,storage);
     }
 
     public void addMaterial(String material, int cost, int amount) {

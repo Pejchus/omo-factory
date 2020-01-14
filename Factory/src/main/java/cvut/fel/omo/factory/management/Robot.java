@@ -34,7 +34,6 @@ public class Robot extends Destroyer{
         serialNumber=counter;
         counter++;
     }
-    
     int get_electricity(){
         return this.electricity;
     }

@@ -14,6 +14,10 @@ public class MaintananceObserver extends Observer {
         this.subject = subject;
         maintenance =m;
         subject.setMaintanance(this);
+        repairs.put("run out of oil",1);
+        repairs.put("neni mu nic",2);
+        repairs.put("kolecko se polamalo",5);
+        repairs.put("to je mu a hodne",10);
     }
     @Override
     public void update() {

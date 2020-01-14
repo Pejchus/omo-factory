@@ -22,4 +22,8 @@ abstract class Destroyer {
         }
         return 1;
     }
+
+    public int getSerialNumber() {
+        return serialNumber;
+    }
 }

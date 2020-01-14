@@ -50,6 +50,14 @@ public class Line implements Comparable<Line> {
     }
     public int getPriority(){return this.priority;}
 
+    public ArrayList<Robot> getRobots() {
+        return robots;
+    }
+
+    public ArrayList<Machine> getMachines() {
+        return machines;
+    }
+
     public boolean functionalityCheck(Storage storage){
         int nonFunctionalRobots = 0;
         int functionalMachines = 0;

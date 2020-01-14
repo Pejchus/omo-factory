@@ -53,4 +53,8 @@ public class Machine extends Destroyer {
         return result;
     }
 
+    public void maintananceDone(){
+        this.functionality =true;
+    }
+
 }
