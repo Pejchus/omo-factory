@@ -50,14 +50,6 @@ public class Line implements Comparable<Line> {
     }
     public int getPriority(){return this.priority;}
 
-    public ArrayList<Robot> getRobots() {
-        return robots;
-    }
-
-    public ArrayList<Machine> getMachines() {
-        return machines;
-    }
-
     public boolean functionalityCheck(Storage storage){
         int nonFunctionalRobots = 0;
         int functionalMachines = 0;
@@ -75,13 +67,21 @@ public class Line implements Comparable<Line> {
         }
         return true;
     }
-    public void work(){
+    public int work(){
             /*TODO work will create a product
             1) update consumption stats of robots and machines and send them to API
             3) value of product will be added to finance budget
             4) time iterates*/
         getRobotDiagnostics();
         getMachineDiagnostics();
+        return 0;
+    }
+    public int payPeasants(){
+        int pay=0;
+        for(Person p: people){
+            pay+= p.get_wage();
+        }
+        return pay;
     }
 
     @Override
@@ -125,7 +125,10 @@ public class Line implements Comparable<Line> {
                 return;
             }
         }for(Machine m:machines){
-            m.maintananceDone();
+            if (m.getSerialNumber()==serialNumber){
+                m.maintananceDone();
+                return;
+            }
         }
     }
 }

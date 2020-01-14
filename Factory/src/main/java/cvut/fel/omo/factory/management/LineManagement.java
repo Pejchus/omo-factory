@@ -2,6 +2,7 @@ package cvut.fel.omo.factory.management;
 
 import cvut.fel.omo.factory.events.EventCreator;
 import cvut.fel.omo.factory.events.LineObserver;
+import cvut.fel.omo.factory.finance.Finance;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,8 +15,10 @@ public class LineManagement {
     private EventCreator eventCreator;
     private Storage storage;
     private LineObserver observer;
+    private Finance finance;
 
-    public LineManagement(EventCreator e,Storage s){
+    public LineManagement(EventCreator e,Storage s,Finance f){
+        finance=f;
         storage=s;
         lines = new ArrayList<Line>();
         activeLines = 0;
@@ -39,6 +42,7 @@ public class LineManagement {
     public void work(Storage storage){
         Collections.sort(this.lines);
         for(Line line:lines) {
+            finance.pay(line.payPeasants());
             if (line.functionalityCheck(storage)) {
                 line.work();
                 this.activeLines++;
