@@ -5,9 +5,10 @@ import cvut.fel.omo.factory.events.EventCreator;
 
 public class Maintenance {
     Maintainer[] maintainers;
-    EventCreator eventCreator;//not initialized
+    EventCreator eventCreator;
 
-    public Maintenance(){
+    public Maintenance(EventCreator eventCreator){
+        this.eventCreator = eventCreator;
         this.maintainers = new Maintainer[10];
         int i;
         for (i = 0; i<=9; i++){
