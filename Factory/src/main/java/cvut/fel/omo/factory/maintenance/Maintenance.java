@@ -2,13 +2,16 @@ package cvut.fel.omo.factory.maintenance;
 
 import cvut.fel.omo.factory.events.Event;
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.events.MaintananceObserver;
 
 public class Maintenance {
     Maintainer[] maintainers;
     EventCreator eventCreator;
+    private MaintananceObserver observer;
 
     public Maintenance(EventCreator eventCreator){
         this.eventCreator = eventCreator;
+        observer = new MaintananceObserver(eventCreator,this);
         this.maintainers = new Maintainer[10];
         int i;
         for (i = 0; i<=9; i++){

@@ -1,6 +1,7 @@
 package cvut.fel.omo.factory.management;
 
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.events.LineObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +13,7 @@ public class LineManagement {
     private ArrayList<Integer> outages;
     private EventCreator eventCreator;
     private Storage storage;
+    private LineObserver observer;
 
     public LineManagement(EventCreator e,Storage s){
         storage=s;
@@ -20,6 +22,7 @@ public class LineManagement {
         all_blueprints = new ArrayList<Blueprint>();
         outages = new ArrayList<Integer>();
         eventCreator=e;
+        observer = new LineObserver(eventCreator,this);
     }
     public void addBlueprint(Blueprint B){
         all_blueprints.add(B);

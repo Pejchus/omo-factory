@@ -5,6 +5,7 @@ public class EventCreator {
     private Queue<Event> events;
     private MaintananceObserver maintanance;
     private InspectorObserver inspections;
+    private LineObserver lines;
     private int tact;
 
     public EventCreator(int tact){
@@ -15,6 +16,9 @@ public class EventCreator {
     }
     void setMaintanance(MaintananceObserver m){
         maintanance=m;
+    }
+    void setLines(LineObserver l){
+        lines=l;
     }
     public boolean pushEvent(Event event){
         return events.add(event);
