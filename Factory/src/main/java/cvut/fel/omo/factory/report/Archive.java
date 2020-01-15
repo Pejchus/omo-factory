@@ -29,6 +29,10 @@ public class Archive {
 
     public Archive(){
         dataChain = getDataChain();
+        statData = new ArrayList<StatData>();
+        configData = new ArrayList<ConfigData>();
+        eventData = new ArrayList<EventData>();
+        outData = new ArrayList<OuttagesData>();
     }
 
     public void saveData(){
@@ -52,9 +56,7 @@ public class Archive {
         this.eventData.add(ev);
     }
 
-    public void addConf(ConfigData cf){
-        this.configData.add(cf);
-    }
+    public void addConf(ConfigData cf){ this.configData.add(cf); }
     public void addOut(OuttagesData out) {this.outData.add(out);}
 
 }

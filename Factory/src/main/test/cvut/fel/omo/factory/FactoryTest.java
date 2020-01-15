@@ -3,8 +3,7 @@ package cvut.fel.omo.factory;
 import cvut.fel.omo.factory.events.Event;
 import cvut.fel.omo.factory.maintenance.Maintainer;
 import cvut.fel.omo.factory.management.Blueprint;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.ArrayList;
 
