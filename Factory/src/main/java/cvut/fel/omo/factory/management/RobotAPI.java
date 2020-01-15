@@ -8,11 +8,11 @@ public class RobotAPI {
         this.robot = robot;
     }
 
-    Integer getOil(){
+    public int getOil(){
         return this.robot.get_oil();
     }
 
-    Integer getElectricity(){
+    public int getElectricity(){
         return this.robot.get_electricity();
     }
 }

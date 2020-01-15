@@ -34,6 +34,8 @@ public class Robot extends Destroyer implements Comparable<Robot>{
         serialNumber=counter;
         counter++;
     }
+
+    public RobotAPI getAPI() { return robotApi; }
     public int get_electricity(){
         return this.electricity;
     }

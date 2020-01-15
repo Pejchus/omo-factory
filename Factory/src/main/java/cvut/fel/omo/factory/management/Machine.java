@@ -29,7 +29,8 @@ public class Machine extends Destroyer implements Comparable<Machine>{
         counter++;
     }
 
-    int get_electricity(){
+    public MachineAPI getAPI(){return machineApi;}
+    public int get_electricity(){
         return this.electricity;
     }
     void setOil(int oil){this.oil=oil;}

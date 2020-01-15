@@ -3,10 +3,15 @@ package cvut.fel.omo.factory.report;
 import java.util.ArrayList;
 
 public class Archive {
-
     ArrayList<StatData> statData;
     ArrayList<ConfigData> configData;
     ArrayList<EventData> eventData;
+    private AbstractData dataChain;
+
+    private static AbstractData getDataChain(){
+        AbstractData configData = new ConfigData(AbstractData.CONFIG);
+        AbstractData consumpData = new
+    }
 
     public Archive(){
     }
