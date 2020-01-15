@@ -70,6 +70,7 @@ public class Robot extends Destroyer implements Comparable<Robot>{
     public void maintananceCompleted(Storage storage){
         this.functionality = true;
         this.replacment = false;
+        this.oil=100;
         storage.returnRobot(this.replaceRobot);
 
     }

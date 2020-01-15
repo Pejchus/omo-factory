@@ -47,7 +47,7 @@ public class Machine extends Destroyer implements Comparable<Machine>{
         int result = mayDestroy(2);
         oil-=(int)(3.0 * Math.random());
         if(oil<30){
-            eventCreator.pushEvent(new Event("run out of oil",this.toString(),2));
+            eventCreator.pushEvent(new Event("run out of oil",String.valueOf(serialNumber),2));
             result = 0;
         }
         if(result==0){this.functionality=false;}
@@ -55,6 +55,7 @@ public class Machine extends Destroyer implements Comparable<Machine>{
     }
 
     public void maintananceDone(){
+        this.oil=100;
         this.functionality =true;
     }
 

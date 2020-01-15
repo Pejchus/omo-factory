@@ -40,7 +40,8 @@ public class FactoryTest {
         britneySpears.work(einstein);
 
         Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
-        for(int i =2;i<10;i++){
+        for(int i =2;i<100000;i++){
+
             britneySpears.work(einstein);
         }
 

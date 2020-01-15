@@ -1,6 +1,7 @@
 package cvut.fel.omo.factory.events;
 import cvut.fel.omo.factory.maintenance.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,16 +24,31 @@ public class MaintananceObserver extends Observer {
     @Override
     public void update() {
         maintenance.processRepair();
-        for(Event e:subject.getEvents()){
+        ArrayList<Event> toremove = new ArrayList<>();
+
+        for (Event e : subject.getEvents()) {
+            System.out.println(e.getSource() + " " + e.getType());
             for (Map.Entry<String, Integer> entry : repairs.entrySet()) {
-                if(entry.getKey()==e.getType()){
-                    if(maintenance.callMaintenance(entry.getValue(),Integer.valueOf(e.getSource()))){
-                        subject.remove(e);
-                    }else{break;}
+                if (entry.getKey() == e.getType()) {
+                    if (maintenance.callMaintenance(entry.getValue(), Integer.valueOf(e.getSource()))) {
+                        toremove.add(e);
+                    } else {
+                        fuckConcurrentException(toremove);
+                        return;
+                    }
 
                 }
 
             }
+
+        }
+        fuckConcurrentException(toremove);
+    }
+
+    private void fuckConcurrentException(ArrayList<Event> toremove){
+        for (int i = 0; i < toremove.size(); ) {
+            subject.remove(toremove.get(0));
+            toremove.remove(0);
         }
     }
 }
