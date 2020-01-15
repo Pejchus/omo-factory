@@ -18,18 +18,16 @@ public class Line implements Comparable<Line> {
     private ArrayList<Machine> machines;
     private ArrayList<Person> people;
     private ArrayList<Robot> robots;
-    private int productNum;
     private int minRobot;
     private int minMachine;
 
 
-    public Line(Blueprint blueprint, int priority, int productNum, EventCreator e){
+    public Line(Blueprint blueprint, int priority, EventCreator e){
         machines = new ArrayList<Machine>();
         people = new ArrayList<Person>();
         robots = new ArrayList<Robot>();
         this.priority = priority;
         this.blueprint = blueprint;
-        this.productNum = productNum;
         String config = blueprint.getConfiguration();
         for(int i=0;i<config.length();i++){
             char A = config.charAt(i);

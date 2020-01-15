@@ -32,10 +32,10 @@ public class EventCreatrorTest {
         Event e1 = new Event("StepanJeDement","DuroToRikal",1);
         Event e2 = new Event("SlovenskoNeexistuje","SputnikNews",1);
         buh.pushEvent(e1);
-        buh.updateTact();
+        buh.updateTact(1);
         buh.pushEvent(e2);
         Assert.assertEquals(buh.getEvents().remove(),e1);
-        buh.updateTact();
+        buh.updateTact(2);
         buh.pushEvent(e1);
         Assert.assertEquals(buh.getEvents().remove(),e2);
         Assert.assertEquals(buh.getEvents().remove(),e1);

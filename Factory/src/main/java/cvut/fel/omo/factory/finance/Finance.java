@@ -12,6 +12,10 @@ public class Finance {
         this.materialsCost = new HashMap<String, Integer>();
     }
 
+    public int getBudget() {
+        return budget;
+    }
+
     public void addMaterial(String material, int cost) {
         this.materialsCost.put(material,cost);
     }

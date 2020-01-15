@@ -8,13 +8,16 @@ import java.nio.charset.StandardCharsets;
 public class eventReport implements report {
     Archive archive;
 
+    eventReport(Archive a){
+        archive=a;
+    }
 
     @Override
     public void createReport(int from, int to) {
         try {
             PrintWriter writer = new PrintWriter("eventReport.txt", StandardCharsets.UTF_8);
-            for (int i = from; i < to; i++) {
-                writer.println(archive.configData.get(i));
+            for (int i = from; i <= to; i++) {
+                writer.println(archive.eventData.get(i));
             }
         } catch (Exception e) {
             e.printStackTrace();

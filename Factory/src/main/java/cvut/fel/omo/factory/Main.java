@@ -12,7 +12,8 @@ public class Main {
         int[] numMaterials = {20,10};
         Blueprint b = new Blueprint("RRMPPMR",materials, numMaterials,10);
         factory.addBlueprint(b);
-        factory.createLine(b,1,200);
+        factory.createLine(b,1);
+        factory.work(time);
 
     }
 }

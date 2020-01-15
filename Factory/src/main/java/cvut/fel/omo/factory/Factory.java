@@ -27,6 +27,7 @@ public class Factory {
         this.maintenance = new Maintenance(eventCreator,finance);
         this.storage = new Storage(eventCreator);
         this.lineManagement = new LineManagement(eventCreator,storage,finance);
+        this.maintenance = new Maintenance(eventCreator,finance);
         this.inspector = new Inspector(lineManagement);
         this.director = new Director(lineManagement);
         this.inspectorObserver = new InspectorObserver(eventCreator,inspector,director);
@@ -40,13 +41,34 @@ public class Factory {
     public void addBlueprint(Blueprint B) {
         lineManagement.addBlueprint(B);
     }
-    public void createLine(Blueprint blueprint, int priority, int productNum) {
-        lineManagement.createLine(blueprint, priority, productNum);
+    public void createLine(Blueprint blueprint, int priority) {
+        lineManagement.createLine(blueprint, priority);
+    }
+
+    public Storage getStorage() {
+        return storage;
+    }
+
+    public EventCreator getEventCreator() {
+        return eventCreator;
+    }
+
+    public LineManagement getLineManagement() {
+        return lineManagement;
+    }
+
+    public Maintenance getMaintenance() {
+        return maintenance;
+    }
+
+    public Finance getFinance() {
+        return finance;
     }
 
     public void work(Time time){
         eventCreator.updateTact(time.getTact());
         lineManagement.work();
+        //eventCreator.doEvenets
         //reports
         time.updateTime();
         eventCreator.updateTact(time.getTact());

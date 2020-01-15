@@ -19,7 +19,15 @@ public class LineManagement {
     private LineObserver observer;
     private Finance finance;
 
-    public LineManagement(EventCreator e,Storage s,Finance f){
+    public int getActiveLines() {
+        return activeLines;
+    }
+
+    public ArrayList<Blueprint> getAll_blueprints() {
+        return all_blueprints;
+    }
+
+    public LineManagement(EventCreator e, Storage s, Finance f){
         finance=f;
         storage=s;
         lines = new ArrayList<Line>();
@@ -32,8 +40,8 @@ public class LineManagement {
     public void addBlueprint(Blueprint B){
         all_blueprints.add(B);
     }
-    public void createLine(Blueprint blueprint, int priority, int productNum){
-        Line line = new Line(blueprint,priority,productNum, eventCreator);
+    public void createLine(Blueprint blueprint, int priority){
+        Line line = new Line(blueprint,priority, eventCreator);
         lines.add(line);
     }
     public void repairDone(int serialNumber){
