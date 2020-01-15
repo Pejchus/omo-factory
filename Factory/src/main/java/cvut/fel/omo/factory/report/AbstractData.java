@@ -1,5 +1,7 @@
 package cvut.fel.omo.factory.report;
 
+import cvut.fel.omo.factory.Factory;
+
 public abstract class AbstractData {
     public static int CONFIG = 1;
     public static int CONSUMP = 2;
@@ -19,6 +21,13 @@ public abstract class AbstractData {
             nextData.saveData(level,archive);
         }
     }
+    public void updateData(int level,Factory factory){
+        if(this.level <= level){update(factory);}
+        if(nextData != null){
+            nextData.updateData(level,factory);
+        }
+    }
 
     abstract protected void save(Archive archive);
+    abstract protected void update(Factory factory);
 }

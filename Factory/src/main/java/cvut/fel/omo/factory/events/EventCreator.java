@@ -9,13 +9,13 @@ public class EventCreator {
     private InspectorObserver inspections;
     private LineObserver lines;
     private int tact;
-    EventData data;
+    private ArrayList<Event> data;
 
     public EventCreator(int tact){
         events = new PriorityQueue<Event>(eventComparator);
         //this.maintanance = new MaintananceObserver(this);
        // this.inspections = new InspectorObserver(this);
-        data = new EventData();
+        data = new ArrayList<Event>();
         this.tact = tact;
     }
     void setMaintanance(MaintananceObserver m){
@@ -29,10 +29,13 @@ public class EventCreator {
         return events.add(event);
     }
     void remove(Event e){
-        data.push(e);
+        data.add(e);
         events.remove(e);
     }
     public int getTact(){return this.tact;}
+
+    public ArrayList<Event> getData() { return data; }
+
     public void updateTact(int tact){
         this.tact = tact;
         notifyObservers();

@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 public class ConfigData extends AbstractData{
     ArrayList<Line> lines;
-    private Archive archive;
     private int level;
 
     public ConfigData(int level){
         this.level = level;
     }
 
-    public void update(ArrayList<Line> lines){
+    public void update(Factory f){
+        ArrayList<Line> lines = f.getLineManagement().getLines();
         this.lines = lines;
     }
 
