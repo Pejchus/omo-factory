@@ -1,5 +1,6 @@
 package cvut.fel.omo.factory.report;
 
+import cvut.fel.omo.factory.Factory;
 import cvut.fel.omo.factory.events.Event;
 
 import java.util.ArrayList;
@@ -13,8 +14,9 @@ public class EventData extends AbstractData{
         data=new ArrayList<Event>();
     }
 
-    public void push(Event e){
-        data.add(e);
+    public void update(Factory f) {
+        data = f.getEventCreator().getData();
+        f.getEventCreator().getData().removeAll(data);
     }
     public ArrayList<Event> getData() {
         return data;

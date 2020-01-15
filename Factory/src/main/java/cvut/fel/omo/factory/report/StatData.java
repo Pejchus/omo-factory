@@ -1,5 +1,6 @@
 package cvut.fel.omo.factory.report;
 
+import cvut.fel.omo.factory.Factory;
 import cvut.fel.omo.factory.management.Line;
 
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class StatData extends AbstractData{
             lineData.add(data);
         }
     }
-    public void update(ArrayList<Line> lines){
+    public void update(Factory f){
+        ArrayList<Line> lines = f.getLineManagement().getLines();
         for(int i=0;i<lines.size();i++){
             lineData.get(i).update(lines.get(i));
         }

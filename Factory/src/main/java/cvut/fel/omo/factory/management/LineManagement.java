@@ -57,13 +57,16 @@ public class LineManagement {
             if (lines.get(i).functionalityCheck(storage)) {
                 finance.profit(lines.get(i).work(finance));
                 this.activeLines++;
-                outages.set(i,1);
+                outages.set(i,0);
             }
             else{
-                outages.set(i,0);
+                int outtage = outages.get(i)+1;
+                outages.set(i,outtage);
             }
         }
     }
+
+    public ArrayList<Integer> getOutages() { return outages; }
     public ArrayList<Line> getLines(){
         return this.lines;
     }

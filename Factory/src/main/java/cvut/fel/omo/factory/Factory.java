@@ -9,6 +9,8 @@ import cvut.fel.omo.factory.maintenance.Maintenance;
 import cvut.fel.omo.factory.management.Blueprint;
 import cvut.fel.omo.factory.management.LineManagement;
 import cvut.fel.omo.factory.management.Storage;
+import cvut.fel.omo.factory.report.Archive;
+import cvut.fel.omo.factory.report.ConfigData;
 
 public class Factory {
     Time time;
@@ -20,6 +22,7 @@ public class Factory {
     private InspectorObserver inspectorObserver;
     private Inspector inspector;
     private Director director;
+    private Archive archive;
 
     public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
@@ -70,8 +73,14 @@ public class Factory {
         lineManagement.work();
         //eventCreator.doEvenets
         //reports
+        archive.update(this);
+        archive.saveData();
         time.updateTime();
         eventCreator.updateTact(time.getTact());
+
+    }
+
+    public void make_re(){
 
     }
 }

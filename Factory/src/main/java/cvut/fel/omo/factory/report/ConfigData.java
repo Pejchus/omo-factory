@@ -14,7 +14,8 @@ public class ConfigData extends AbstractData{
         this.level = level;
     }
 
-    public void update(ArrayList<Line> lines){
+    public void update(Factory f){
+        ArrayList<Line> lines = f.getLineManagement().getLines();
         this.lines = lines;
     }
 
