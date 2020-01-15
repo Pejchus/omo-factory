@@ -15,6 +15,7 @@ public class InspectorObserver extends Observer {
         this.subject = subject;
         this.inspector = inspector;
         this.director = director;
+        subject.setInspections(this);
     }
 
     @Override

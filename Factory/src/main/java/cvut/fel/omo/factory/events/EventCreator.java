@@ -21,6 +21,7 @@ public class EventCreator {
     void setMaintanance(MaintananceObserver m){
         maintanance=m;
     }
+    void setInspections(InspectorObserver i){inspections=i;}
     void setLines(LineObserver l){
         lines=l;
     }
