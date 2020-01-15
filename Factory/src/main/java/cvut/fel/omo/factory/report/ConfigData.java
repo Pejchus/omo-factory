@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class ConfigData extends AbstractData{
     ArrayList<Line> lines;
-    private Archive archive;
     private int level;
 
     public ConfigData(int level){

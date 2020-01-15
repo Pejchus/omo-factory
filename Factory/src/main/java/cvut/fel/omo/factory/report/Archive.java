@@ -10,7 +10,8 @@ public class Archive {
 
     private static AbstractData getDataChain(){
         AbstractData configData = new ConfigData(AbstractData.CONFIG);
-        AbstractData consumpData = new
+        AbstractData consumData = new StatData(AbstractData.CONSUMP);
+        AbstractData eventData = new EventData(AbstractData.EVENT);
     }
 
     public Archive(){

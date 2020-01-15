@@ -42,6 +42,7 @@ public class LineManagement {
     }
     public void createLine(Blueprint blueprint, int priority){
         Line line = new Line(blueprint,priority, eventCreator);
+        outages.add(0);
         lines.add(line);
     }
     public void repairDone(int serialNumber){
@@ -51,11 +52,15 @@ public class LineManagement {
     }
     public void work(){
         Collections.sort(this.lines);
-        for(Line line:lines) {
-            finance.pay(line.payPeasants());
-            if (line.functionalityCheck(storage)) {
-                finance.profit(line.work(finance));
+        for(int i=0;i<lines.size();i++){
+            finance.pay(lines.get(i).payPeasants());
+            if (lines.get(i).functionalityCheck(storage)) {
+                finance.profit(lines.get(i).work(finance));
                 this.activeLines++;
+                outages.set(i,1);
+            }
+            else{
+                outages.set(i,0);
             }
         }
     }

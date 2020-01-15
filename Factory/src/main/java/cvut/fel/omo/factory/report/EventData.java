@@ -4,10 +4,12 @@ import cvut.fel.omo.factory.events.Event;
 
 import java.util.ArrayList;
 
-public class EventData {
+public class EventData extends AbstractData{
     private ArrayList<Event> data;
+    private int level;
 
-    public EventData(){
+    public EventData(int level){
+        this.level = level;
         data=new ArrayList<Event>();
     }
 
@@ -16,5 +18,9 @@ public class EventData {
     }
     public ArrayList<Event> getData() {
         return data;
+    }
+    @Override
+    protected void save(Archive archive) {
+        archive.addEvent(this);
     }
 }
