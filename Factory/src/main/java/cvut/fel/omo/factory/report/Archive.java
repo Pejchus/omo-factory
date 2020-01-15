@@ -55,4 +55,6 @@ public class Archive {
     public void addConf(ConfigData cf){
         this.configData.add(cf);
     }
+    public void addOut(OuttagesData out) {this.outData.add(out);}
+
 }
