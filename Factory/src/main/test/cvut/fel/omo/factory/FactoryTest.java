@@ -1,9 +1,12 @@
 package cvut.fel.omo.factory;
 
 import cvut.fel.omo.factory.events.Event;
+import cvut.fel.omo.factory.maintenance.Maintainer;
 import cvut.fel.omo.factory.management.Blueprint;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 public class FactoryTest {
 
@@ -13,7 +16,7 @@ public class FactoryTest {
         Factory britneySpears = new Factory(einstein);
         String[] materials = {"words", "melody"};
         int[] numMaterials = {100,2};
-        Blueprint song = new Blueprint("SongWriting",materials, numMaterials,10000);
+        Blueprint song = new Blueprint("RRMPPMR",materials, numMaterials,10000);
         britneySpears.addBlueprint(song);
         Assert.assertNotNull(britneySpears.getEventCreator());
         Assert.assertNotNull(britneySpears.getFinance());
@@ -31,7 +34,26 @@ public class FactoryTest {
         britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).setFunctionality(false);
         britneySpears.getEventCreator().pushEvent(new Event("neni mu nic",String.valueOf(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).getSerialNumber()),2));
         britneySpears.work(einstein);
+        Assert.assertTrue(britneySpears.getLineManagement().getActiveLines()==0);
+        Assert.assertFalse(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
+        Assert.assertTrue(checkrep(britneySpears.getMaintenance().getMaintainers()));
+        britneySpears.work(einstein);
+
+        Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
+        for(int i =2;i<10;i++){
+            britneySpears.work(einstein);
+        }
+
+
     }
 
+    private boolean checkrep(Maintainer [] ar){
+        for(Maintainer m: ar){
+            if(m.getAvailableIn()>0){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

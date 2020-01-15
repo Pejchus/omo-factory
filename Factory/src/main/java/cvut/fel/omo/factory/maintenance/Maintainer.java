@@ -12,6 +12,7 @@ public class Maintainer {
         repairs =-1;
     }
 
-
-
+    public int getAvailableIn() {
+        return availableIn;
+    }
 }
