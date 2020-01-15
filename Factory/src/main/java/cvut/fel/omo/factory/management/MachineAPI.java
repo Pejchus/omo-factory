@@ -7,11 +7,11 @@ public class MachineAPI {
         this.machine = machine;
     }
 
-    int getOil(){
+    public int getOil(){
         return this.machine.get_oil();
     }
 
-    int getElectricity(){
+    public int getElectricity(){
         return this.machine.get_electricity();
     }
 }
