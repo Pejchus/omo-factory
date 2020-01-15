@@ -10,12 +10,9 @@ import cvut.fel.omo.factory.management.Machine;
 import cvut.fel.omo.factory.management.Robot;
 
 public class Inspector {
-    private EventCreator eventCreator;
     private LineManagement lineManagement;
-    private boolean line, robot, machine, person;
 
-    public Inspector(EventCreator eventCreator, LineManagement lineManagement){
-        this.eventCreator = eventCreator;
+    public Inspector(LineManagement lineManagement){
         this.lineManagement = lineManagement;
     }
 

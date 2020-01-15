@@ -1,7 +1,10 @@
 package cvut.fel.omo.factory;
 
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.events.InspectorObserver;
 import cvut.fel.omo.factory.finance.Finance;
+import cvut.fel.omo.factory.maintenance.Director;
+import cvut.fel.omo.factory.maintenance.Inspector;
 import cvut.fel.omo.factory.maintenance.Maintenance;
 import cvut.fel.omo.factory.management.Blueprint;
 import cvut.fel.omo.factory.management.LineManagement;
@@ -14,6 +17,9 @@ public class Factory {
     private Finance finance;
     private EventCreator eventCreator;
     private LineManagement lineManagement;
+    private InspectorObserver inspectorObserver;
+    private Inspector inspector;
+    private Director director;
 
     public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
@@ -21,6 +27,9 @@ public class Factory {
         this.maintenance = new Maintenance(eventCreator,finance);
         this.storage = new Storage(eventCreator);
         this.lineManagement = new LineManagement(eventCreator,storage,finance);
+        this.inspector = new Inspector(lineManagement);
+        this.director = new Director(lineManagement);
+        this.inspectorObserver = new InspectorObserver(eventCreator,inspector,director);
     }
 
     public void addMaterial(String material, int cost, int amount) {
@@ -36,8 +45,8 @@ public class Factory {
     }
 
     public void work(Time time){
-        //eventCreator.doEvenets
-        lineManagement.work(this.storage);
+        eventCreator.updateTact(time.getTact());
+        lineManagement.work();
         //reports
         time.updateTime();
         eventCreator.updateTact(time.getTact());

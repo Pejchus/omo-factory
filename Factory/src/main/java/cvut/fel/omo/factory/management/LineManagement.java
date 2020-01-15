@@ -1,8 +1,10 @@
 package cvut.fel.omo.factory.management;
 
 import cvut.fel.omo.factory.events.EventCreator;
+import cvut.fel.omo.factory.events.InspectorObserver;
 import cvut.fel.omo.factory.events.LineObserver;
 import cvut.fel.omo.factory.finance.Finance;
+import cvut.fel.omo.factory.maintenance.Inspector;
 
 import java.util.ArrayList;
 import java.util.Collections;

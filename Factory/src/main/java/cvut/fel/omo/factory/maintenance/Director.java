@@ -7,12 +7,10 @@ import cvut.fel.omo.factory.management.Machine;
 import cvut.fel.omo.factory.management.Robot;
 
 public class Director {
-    private EventCreator eventCreator;
     private LineManagement lineManagement;
-    private boolean line, robot, machine, person;
 
-    public Director(EventCreator eventCreator, LineManagement lineManagement){
-        this.eventCreator = eventCreator;
+
+    public Director(LineManagement lineManagement){
         this.lineManagement = lineManagement;
     }
 
