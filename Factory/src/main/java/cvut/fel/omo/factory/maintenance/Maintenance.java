@@ -11,7 +11,11 @@ public class Maintenance {
     private MaintananceObserver observer;
     private Finance finance;
 
-    public Maintenance(EventCreator eventCreator,Finance f){
+    public Maintainer[] getMaintainers() {
+        return maintainers;
+    }
+
+    public Maintenance(EventCreator eventCreator, Finance f){
         finance=f;
         this.eventCreator = eventCreator;
         observer = new MaintananceObserver(eventCreator,this);
