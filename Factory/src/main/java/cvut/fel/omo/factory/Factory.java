@@ -34,6 +34,7 @@ public class Factory {
         this.inspector = new Inspector(lineManagement);
         this.director = new Director(lineManagement);
         this.inspectorObserver = new InspectorObserver(eventCreator,inspector,director);
+        archive=new Archive();
     }
 
     public void addMaterial(String material, int cost, int amount) {
