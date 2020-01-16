@@ -21,14 +21,24 @@ public class ConsumptionReport implements Report {
             PrintWriter writer = new PrintWriter(f, StandardCharsets.UTF_8);
             writer.write("CONSUMPTION REPORT - FROM TACT "+from+" TO TACT "+to+"\n");
             writer.flush();
+            //DATA
+            int total = 0;
+            ArrayList<Integer> line_consumption = new ArrayList<Integer>();
+            /////////////////////////////////////////////
+            for(int i=from;i<=to;i++){
+                StatData statData = archive.getStatData().get(i);
+                total += statData.getFactoryElectricity();
+                for(int j=0;j<statData.getLineData().size();j++){
+                    LineStatData lineData = statData.getLineData().get(j);
+                }
+            }
             for(int i=from;i<=to;i++) {
                 StatData statData = archive.getStatData().get(i);
-                LineStatData lineData = statData.getLineData().get(i);
-                writer.write("===============================================\n" +
-                        "Consumption in tact " + i + ":\n" +
-                        "\tTotal consumption: " + statData.getFactoryElectricity() + "\n");
+
+                writer.write("\tTotal consumption: " + total + "\n");
                 writer.flush();
                 for (int j = 0; j < statData.getLineData().size(); j++) {
+                    LineStatData lineData = statData.getLineData().get(j);
                     writer.write("\t+++++++++++++++++++++++++++++\n" +
                             "\tTotal consumption of line " + (j + 1) + ": "+lineData.getAllElectricity()+"\n" +
                             "\t\tConsumption of all machines: "+lineData.getMachinesElectricity()+"\n"+
@@ -36,13 +46,13 @@ public class ConsumptionReport implements Report {
                             "\t\tConsumption of every machine: \n");
                     writer.flush();
                     for(int x=0;x<lineData.getMachElectricity().size();x++){
-                        writer.write("\t\t\t"+lineData.getMachElectricity().get(i)+"\n");
+                        writer.write("\t\t\t"+lineData.getMachElectricity().get(x)+"\n");
                         writer.flush();
                     }
                     writer.write("\t\tConusmption of every robot: \n");
                     writer.flush();
                     for(int x=0;x<lineData.getRobElectricity().size();x++){
-                        writer.write("\t\t\t"+lineData.getRobElectricity().get(i)+"\n");
+                        writer.write("\t\t\t"+lineData.getRobElectricity().get(x)+"\n");
                         writer.flush();
                     }
                 }

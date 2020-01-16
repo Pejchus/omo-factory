@@ -34,7 +34,7 @@ public class Line implements Comparable<Line> {
             switch(A){
                 //TODO Discuss if parameters electricity and oil are needed
                 case 'R':
-                    Robot newRobot = new Robot(0,100,this.priority,e);
+                    Robot newRobot = new Robot(20,100,this.priority,e);
                     robots.add(newRobot);
                     break;
                 case 'P':
@@ -42,7 +42,7 @@ public class Line implements Comparable<Line> {
                     people.add(newPerson);
                     break;
                 case 'M':
-                    Machine newMachine = new Machine(0,this.priority,e);
+                    Machine newMachine = new Machine(50,this.priority,e);
                     machines.add(newMachine);
                     break;
             }
