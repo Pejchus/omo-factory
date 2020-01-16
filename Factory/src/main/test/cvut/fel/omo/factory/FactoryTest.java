@@ -36,24 +36,27 @@ public class FactoryTest {
         britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).setFunctionality(false);
         britneySpears.getEventCreator().pushEvent(new Event("neni mu nic",String.valueOf(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).getSerialNumber()),2));
         britneySpears.work(einstein);
-        Assert.assertFalse(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
+       // Assert.assertFalse(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         Assert.assertTrue(checkrep(britneySpears.getMaintenance().getMaintainers()));
         britneySpears.work(einstein);
 
         //Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         //Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         britneySpears.createLine(song,2);
-        britneySpears.createLine(song,3);
-        for(int i =2;i<10;i++){
+       // britneySpears.createLine(song,3);
+        for(int i =2;i<100;i++){
             if(i==5){
-                britneySpears.createLine(song,4);
-                britneySpears.createLine(song,5);
-                britneySpears.createLine(song,6);
+                //britneySpears.createLine(song,4);
+                //britneySpears.createLine(song,5);
+                //britneySpears.createLine(song,6);
             }
             britneySpears.work(einstein);
 
         }
-        britneySpears.generateReport("consumption",0,9);
+        britneySpears.generateReport("Events",0,0);
+        britneySpears.generateReport("Events",1,1);
+        britneySpears.generateReport("Events",0,1);
+        britneySpears.generateReport("Events",0,99);
 
     }
 

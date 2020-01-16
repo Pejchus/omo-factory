@@ -36,6 +36,10 @@ public class EventCreator {
 
     public ArrayList<Event> getData() { return data; }
 
+    public void erasedata(){
+        data = new ArrayList<Event>();
+    }
+
     public void updateTact(int tact){
         this.tact = tact;
         notifyObservers();
@@ -45,6 +49,7 @@ public class EventCreator {
         maintanance.update();
         inspections.update();
         lines.update();
+
     }
     Comparator<Event> eventComparator = new Comparator<Event>() {
         @Override

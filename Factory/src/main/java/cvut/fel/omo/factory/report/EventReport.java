@@ -28,7 +28,7 @@ public class EventReport implements Report {
                 writer.flush();
                 for (Event e : eventData.getData()) {
                     writer.write("\t+++++++++++++++++++++++++++++\n" +
-                            "\tEvent type: " + (e.getType()) + "Event source: " + e.getSource());
+                            "\tEvent type: " + (e.getType()) + " Event source: " + e.getSource()+"\n");
                     writer.flush();
                 }
             }

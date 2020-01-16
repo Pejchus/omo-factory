@@ -75,6 +75,7 @@ public class Factory {
     public void work(Time time){
         eventCreator.updateTact(time.getTact());
         lineManagement.work();
+
         //eventCreator.doEvenets
         archive.update(this);
         archive.save();

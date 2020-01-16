@@ -59,8 +59,6 @@ public class Archive {
     }
 
     public void addEvent(EventData ev){
-        System.out.println("kokot");
-        System.out.println(ev);
         this.eventData.add(ev);
     }
 

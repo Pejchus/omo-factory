@@ -5,14 +5,14 @@ import cvut.fel.omo.factory.events.EventCreator;
 
 abstract class Destroyer {
     protected EventCreator eventCreator;
-    protected static int counter;
+    protected static int counter=0;
     protected int serialNumber;
     protected int mayDestroy(int replacement){
-        if(((int)(30.0 * Math.random()))==1){
+        if(((int)(40.0 * Math.random()))==1){
             eventCreator.pushEvent(new Event("neni mu nic",String.valueOf(serialNumber),replacement));
             return 0;
         }
-        if(((int)(75.0 * Math.random()))==1){
+        if(((int)(100.0 * Math.random()))==1){
             eventCreator.pushEvent(new Event("kolecko se polamalo",String.valueOf(serialNumber),replacement));
             return 0;
         }
