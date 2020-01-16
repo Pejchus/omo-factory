@@ -7,7 +7,7 @@ import cvut.fel.omo.factory.management.LineManagement;
 import java.util.ArrayList;
 
 public class ConfigData extends AbstractData{
-    ArrayList<Line> lines;
+    private ArrayList<Line> lines;
     private int level;
 
     public ConfigData(int level){

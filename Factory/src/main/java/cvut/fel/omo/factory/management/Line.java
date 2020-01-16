@@ -48,6 +48,7 @@ public class Line implements Comparable<Line> {
             }
         }
     }
+    public Blueprint getBlueprint(){return this.blueprint;}
     public int getPriority(){return this.priority;}
     public ArrayList<Robot> getRobots(){return robots;}
     public ArrayList<Machine> getMachines(){return  machines;}
