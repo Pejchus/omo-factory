@@ -17,19 +17,23 @@ public class ConfigReport implements Report {
     @Override
     public void create(int from, int to) {
         try {
-            PrintWriter writer = new PrintWriter("Reports/Configuration_reports/ConfigReport_from_"+from+"_to_"+to+".txt", StandardCharsets.UTF_8);
-            writer.print("CONFIGURATION REPORT - FROM TACT "+from+" TO TACT "+to+"\n");
+            PrintWriter writer = new PrintWriter("ConfigReport_from_"+from+"_to_"+to+".txt", StandardCharsets.UTF_8);
+            writer.write("CONFIGURATION REPORT - FROM TACT "+from+" TO TACT "+to+"\n");
+            writer.flush();
             for(int i=from;i<=to;i++) {
                 ArrayList<Line> lines = archive.configData.get(i).getLines();
-                writer.print("=======================================================\n" +
+                writer.write("===============================================\n" +
                         "Configuration in tact " + i + ":\n" +
                         "\tTotal number of lines: " + lines.size() + "\n");
+                writer.flush();
                 for (int j = 0; j < lines.size(); j++) {
-                    writer.print("+++++++++++++++++++++++++++++++++++++\n" +
+                    writer.write("\t+++++++++++++++++++++++++++++\n" +
                             "\tCongiguration of line " + (j + 1) + ":\n" +
                             "\t\t" + lines.get(j).getBlueprint().getConfiguration() + "\n");
+                    writer.flush();
                 }
             }
+            writer.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

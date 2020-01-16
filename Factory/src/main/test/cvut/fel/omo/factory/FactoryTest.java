@@ -16,7 +16,9 @@ public class FactoryTest {
         String[] materials = {"words", "melody"};
         int[] numMaterials = {100,2};
         Blueprint song = new Blueprint("RRMPPMR",materials, numMaterials,10000);
+        Blueprint album = new Blueprint("MMMPRPRMPRP",materials, numMaterials,10000);
         britneySpears.addBlueprint(song);
+        britneySpears.addBlueprint(album);
         Assert.assertNotNull(britneySpears.getEventCreator());
         Assert.assertNotNull(britneySpears.getFinance());
         Assert.assertNotNull(britneySpears.getLineManagement());
@@ -30,10 +32,11 @@ public class FactoryTest {
         britneySpears.addMaterial("words",1,1);
         britneySpears.addMaterial("melody",100,1);
         britneySpears.createLine(song,1);
+        britneySpears.createLine(album,1);
         britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).setFunctionality(false);
         britneySpears.getEventCreator().pushEvent(new Event("neni mu nic",String.valueOf(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).getSerialNumber()),2));
         britneySpears.work(einstein);
-        Assert.assertTrue(britneySpears.getLineManagement().getActiveLines()==0);
+        Assert.assertTrue(britneySpears.getLineManagement().getActiveLines()==1);
         Assert.assertFalse(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         Assert.assertTrue(checkrep(britneySpears.getMaintenance().getMaintainers()));
         britneySpears.work(einstein);
@@ -43,6 +46,7 @@ public class FactoryTest {
 
             britneySpears.work(einstein);
         }
+        britneySpears.generateReport("configuration",1,2);
 
 
     }

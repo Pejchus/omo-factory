@@ -11,6 +11,7 @@ import cvut.fel.omo.factory.management.LineManagement;
 import cvut.fel.omo.factory.management.Storage;
 import cvut.fel.omo.factory.report.Archive;
 import cvut.fel.omo.factory.report.ConfigData;
+import cvut.fel.omo.factory.report.ReportFactory;
 
 public class Factory {
     Time time;
@@ -23,6 +24,7 @@ public class Factory {
     private Inspector inspector;
     private Director director;
     private Archive archive;
+    private ReportFactory reportFactory;
 
     public Factory(Time time) {
         this.eventCreator = new EventCreator(0);
@@ -35,6 +37,7 @@ public class Factory {
         this.director = new Director(lineManagement);
         this.inspectorObserver = new InspectorObserver(eventCreator,inspector,director);
         archive=new Archive();
+        reportFactory = new ReportFactory(archive);
     }
 
     public void addMaterial(String material, int cost, int amount) {
@@ -73,14 +76,16 @@ public class Factory {
         eventCreator.updateTact(time.getTact());
         lineManagement.work();
         //eventCreator.doEvenets
-        //reports
         archive.update(this);
         archive.saveData();
+        //reports
         time.updateTime();
         eventCreator.updateTact(time.getTact());
 
     }
-
+    public void generateReport(String s,int from,int to){
+        reportFactory.getReport(s,from,to);
+    }
     public void make_re(){
 
     }
