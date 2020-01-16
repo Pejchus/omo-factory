@@ -41,12 +41,12 @@ public class FactoryTest {
         Assert.assertTrue(checkrep(britneySpears.getMaintenance().getMaintainers()));
         britneySpears.work(einstein);
 
-        Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
+        //Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         for(int i =2;i<100;i++){
 
             britneySpears.work(einstein);
         }
-        britneySpears.generateReport("configuration",1,2);
+        britneySpears.generateReport("consumption",1,2);
 
 
     }

@@ -5,5 +5,4 @@ public interface Report {
 
     public void create(int from, int to );
 
-    public void print();
 }

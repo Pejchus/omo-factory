@@ -5,19 +5,20 @@ import cvut.fel.omo.factory.Factory;
 import java.util.ArrayList;
 
 public class Archive {
-    ArrayList<StatData> statData;
-    ArrayList<ConfigData> configData;
-    ArrayList<EventData> eventData;
-    ArrayList<OuttagesData> outData;
+    private ArrayList<StatData> statData;
+    private ArrayList<ConfigData> configData;
+    private ArrayList<EventData> eventData;
+    private ArrayList<OuttagesData> outData;
     private AbstractData config;
     private AbstractData consum;
     private AbstractData event;
     private AbstractData outtage;
     private AbstractData dataChain;
 
-    private AbstractData getDataChain(){
+    private AbstractData getDataChain(Factory f){
         config = new ConfigData(AbstractData.CONFIG);
          consum = new StatData(AbstractData.CONSUMP);
+         //((StatData) consum).init(f.getLineManagement().getLines());
          event = new EventData(AbstractData.EVENT);
          outtage = new OuttagesData(AbstractData.OUT);
 
@@ -27,8 +28,8 @@ public class Archive {
         return config;
     }
 
-    public Archive(){
-        dataChain = getDataChain();
+    public Archive(Factory f){
+        dataChain = getDataChain(f);
         statData = new ArrayList<StatData>();
         configData = new ArrayList<ConfigData>();
         eventData = new ArrayList<EventData>();
@@ -47,6 +48,11 @@ public class Archive {
     public AbstractData getConsum() { return consum; }
     public AbstractData getOuttage() { return outtage; }
     public Archive getArchive(){ return this; }
+
+    public ArrayList<ConfigData> getConfigData() { return configData; }
+    public ArrayList<StatData> getStatData() { return statData; }
+    public ArrayList<EventData> getEventData() { return eventData; }
+    public ArrayList<OuttagesData> getOutData() { return outData; }
 
     public void addStat(StatData st){
         this.statData.add(st);

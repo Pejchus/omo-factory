@@ -15,15 +15,12 @@ public class EventReport implements Report {
         try {
             PrintWriter writer = new PrintWriter("EventReport.txt", StandardCharsets.UTF_8);
             for (int i = from; i <= to; i++) {
-                writer.println(archive.eventData.get(i));
+                writer.println(archive.getEventData().get(i));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void print() {
 
-    }
 }

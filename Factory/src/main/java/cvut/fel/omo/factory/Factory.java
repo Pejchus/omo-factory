@@ -36,7 +36,7 @@ public class Factory {
         this.inspector = new Inspector(lineManagement);
         this.director = new Director(lineManagement);
         this.inspectorObserver = new InspectorObserver(eventCreator,inspector,director);
-        archive=new Archive();
+        archive=new Archive(this);
         reportFactory = new ReportFactory(archive);
     }
 

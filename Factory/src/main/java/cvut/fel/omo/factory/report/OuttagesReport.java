@@ -22,8 +22,4 @@ public class OuttagesReport implements Report {
         }
     }
 
-    @Override
-    public void print() {
-
-    }
 }
