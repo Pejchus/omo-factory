@@ -41,17 +41,19 @@ public class FactoryTest {
         britneySpears.work(einstein);
 
         //Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
-        Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
+        //Assert.assertTrue(britneySpears.getLineManagement().getLines().get(0).getMachines().get(0).is_functional());
         britneySpears.createLine(song,2);
         britneySpears.createLine(song,3);
-        britneySpears.createLine(song,4);
-        britneySpears.createLine(song,5);
-        britneySpears.createLine(song,6);
         for(int i =2;i<10;i++){
-
+            if(i==5){
+                britneySpears.createLine(song,4);
+                britneySpears.createLine(song,5);
+                britneySpears.createLine(song,6);
+            }
             britneySpears.work(einstein);
+
         }
-        britneySpears.generateReport("Events",0,9);
+        britneySpears.generateReport("consumption",0,9);
 
     }
 

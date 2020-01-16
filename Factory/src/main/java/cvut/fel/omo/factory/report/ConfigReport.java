@@ -18,20 +18,20 @@ public class ConfigReport implements Report {
     @Override
     public void create(int from, int to) {
         try {
-            File f = new File("Reports/Configuration_reports/configReport_from_"+from+"_to_"+to+".txt");
+            File f = new File("configReport_from_"+from+"_to_"+to+".txt");
             PrintWriter writer = new PrintWriter(f, StandardCharsets.UTF_8);
             writer.write("CONFIGURATION REPORT - FROM TACT "+from+" TO TACT "+to+"\n");
             writer.flush();
             for(int i=from;i<=to;i++) {
-                ArrayList<Line> lines = archive.getConfigData().get(i).getLines();
+                ConfigData data = archive.getConfigData().get(i);
                 writer.write("===============================================\n" +
                         "Configuration in tact " + i + ":\n" +
-                        "\tTotal number of lines: " + lines.size() + "\n");
+                        "\tTotal number of lines: " + data.getNumLines() + "\n");
                 writer.flush();
-                for (int j = 0; j < lines.size(); j++) {
+                for (int j = 0; j < data.getNumLines(); j++) {
                     writer.write("\t+++++++++++++++++++++++++++++\n" +
                             "\tCongiguration of line " + (j + 1) + ":\n" +
-                            "\t\t" + lines.get(j).getBlueprint().getConfiguration() + "\n");
+                            "\t\t" + data.getConfig().get(j) + "\n");
                     writer.flush();
                 }
             }

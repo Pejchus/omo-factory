@@ -17,7 +17,7 @@ public class ConsumptionReport implements Report {
     @Override
     public void create(int from, int to) {
         try {
-            File f = new File("reports/consumption_reports/consumptionReport_from_"+from+"_to_"+to+".txt");
+            File f = new File("consumptionReport_from_"+from+"_to_"+to+".txt");
             PrintWriter writer = new PrintWriter(f, StandardCharsets.UTF_8);
             writer.write("CONSUMPTION REPORT - FROM TACT "+from+" TO TACT "+to+"\n");
             writer.flush();
@@ -36,13 +36,13 @@ public class ConsumptionReport implements Report {
                             "\t\tConsumption of every machine: \n");
                     writer.flush();
                     for(int x=0;x<lineData.getMachElectricity().size();x++){
-                        writer.write("\t\t\t"+lineData.getMachElectricity().get(i));
+                        writer.write("\t\t\t"+lineData.getMachElectricity().get(i)+"\n");
                         writer.flush();
                     }
                     writer.write("\t\tConusmption of every robot: \n");
                     writer.flush();
                     for(int x=0;x<lineData.getRobElectricity().size();x++){
-                        writer.write("\t\t\t"+lineData.getRobElectricity().get(i));
+                        writer.write("\t\t\t"+lineData.getRobElectricity().get(i)+"\n");
                         writer.flush();
                     }
                 }

@@ -77,13 +77,14 @@ public class Factory {
         lineManagement.work();
         //eventCreator.doEvenets
         archive.update(this);
-        archive.saveData();
+        archive.save();
         //reports
         time.updateTime();
         eventCreator.updateTact(time.getTact());
 
     }
     public void generateReport(String s,int from,int to){
+        System.out.println(archive.getConfigData().get(0).getNumLines());
         reportFactory.getReport(s,from,to);
     }
     public void make_re(){

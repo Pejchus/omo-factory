@@ -29,17 +29,17 @@ public class Archive {
     }
 
     public Archive(Factory f){
-        dataChain = getDataChain(f);
         statData = new ArrayList<StatData>();
         configData = new ArrayList<ConfigData>();
         eventData = new ArrayList<EventData>();
         outData = new ArrayList<OuttagesData>();
     }
 
-    public void saveData(){
+    public void save(){
         dataChain.saveData(AbstractData.OUT,this);
     }
     public void update(Factory factory){
+        dataChain = getDataChain(factory);
         dataChain.updateData(AbstractData.OUT,factory);
     }
 
