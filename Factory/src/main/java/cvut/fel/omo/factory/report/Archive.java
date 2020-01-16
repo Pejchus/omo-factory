@@ -22,9 +22,9 @@ public class Archive {
          event = new EventData(AbstractData.EVENT);
          outtage = new OuttagesData(AbstractData.OUT);
 
-        outtage.setNextData(event);
-        event.setNextData(consum);
-        consum.setNextData(config);
+        config.setNextData(consum);
+        consum.setNextData(event);
+        event.setNextData(outtage);
         return config;
     }
 
@@ -59,6 +59,8 @@ public class Archive {
     }
 
     public void addEvent(EventData ev){
+        System.out.println("kokot");
+        System.out.println(ev);
         this.eventData.add(ev);
     }
 

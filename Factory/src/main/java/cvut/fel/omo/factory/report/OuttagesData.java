@@ -23,7 +23,7 @@ public class OuttagesData extends AbstractData {
 
     public void update(Factory f){
         ArrayList<Integer> outtages = f.getLineManagement().getOutages();
-        int count = 0;
+        int count = 1;
         int sum =0;
         for(int x: outtages){
             if(x>maxOuttage){maxOuttage=x;}

@@ -25,7 +25,6 @@ public class MaintananceObserver extends Observer {
     public void update() {
         maintenance.processRepair();
         ArrayList<Event> toremove = new ArrayList<>();
-
         for (Event e : subject.getEvents()) {
             for (Map.Entry<String, Integer> entry : repairs.entrySet()) {
                 if (entry.getKey() == e.getType()) {

@@ -10,11 +10,13 @@ public class EventData extends AbstractData{
     private int level;
 
     public EventData(int level){
+        System.out.println("kopkot");
         this.level = level;
         data=new ArrayList<Event>();
     }
 
     public void update(Factory f) {
+        System.out.println("kokokt");
         data = f.getEventCreator().getData();
         f.getEventCreator().getData().removeAll(data);
     }
@@ -23,6 +25,7 @@ public class EventData extends AbstractData{
     }
     @Override
     protected void save(Archive archive) {
+        System.out.println("kokokt");
         archive.addEvent(this);
     }
 }
