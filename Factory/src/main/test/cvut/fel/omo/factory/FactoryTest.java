@@ -56,7 +56,7 @@ public class FactoryTest {
         britneySpears.generateReport("Events",0,0);
         britneySpears.generateReport("Events",1,1);
         britneySpears.generateReport("Events",0,1);
-        britneySpears.generateReport("Events",0,99);
+        britneySpears.generateReport("Outtages",0,99);
 
     }
 
